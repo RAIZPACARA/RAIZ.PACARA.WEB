@@ -1,4 +1,16 @@
 
+const UMBRAL_PROMOCION = 70000;
+
+const subtotal = /* suma de los productos del carrito */;
+
+const tieneDescuento = subtotal > UMBRAL_PROMOCION;
+const descuento = tieneDescuento ? subtotal * 0.10 : 0;
+const total = subtotal - descuento;
+
+// Envío gratis solo dentro de San Miguel de Tucumán
+const envioGratis =
+  tieneDescuento &&
+  localidad === "San Miguel de Tucumán";
 <!DOCTYPE html>
 <html lang="es">
 <head>
