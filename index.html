@@ -1,407 +1,267 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#778977">
-  <meta name="description" content="Raíz Pacará. Decoración artesanal hecha con dedicación en Tucumán, Argentina.">
-  <title>Raíz Pacará | Decoración artesanal</title>
-
-  <style>
-    :root {
-      --verde: #778977;
-      --arena: #EFECE6;
-      --beige: #F5F2EC;
-      --marron: #A88B73;
-      --texto: #373B33;
-      --blanco: #FFFFFF;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--texto);
-      background: var(--beige);
-      line-height: 1.7;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .aviso {
-      background: var(--verde);
-      color: white;
-      text-align: center;
-      padding: 9px 12px;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    header {
-      text-align: center;
-      padding: 30px 18px 24px;
-      background: var(--beige);
-    }
-
-    .marca {
-      font-size: clamp(30px, 7vw, 48px);
-      font-weight: normal;
-      letter-spacing: 2px;
-      color: var(--verde);
-      line-height: 1.2;
-    }
-
-    .submarca {
-      margin-top: 7px;
-      font-family: Arial, sans-serif;
-      font-size: 10px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--marron);
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 22px;
-      padding: 14px 10px;
-      border-top: 1px solid #ded9cf;
-      border-bottom: 1px solid #ded9cf;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      letter-spacing: 1px;
-    }
-
-    nav a:hover {
-      color: var(--verde);
-    }
-
-    .portada {
-      background: var(--arena);
-      text-align: center;
-      padding: 75px 22px;
-    }
-
-    .etiqueta {
-      font-family: Arial, sans-serif;
-      color: var(--marron);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 10px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      font-size: clamp(34px, 8vw, 58px);
-      font-weight: normal;
-      line-height: 1.2;
-      max-width: 720px;
-      margin: 0 auto 22px;
-    }
-
-    .portada p {
-      max-width: 480px;
-      margin: 0 auto 28px;
-      font-size: 16px;
-    }
-
-    .boton {
-      display: inline-block;
-      background: var(--verde);
-      color: white;
-      padding: 13px 24px;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      border: 1px solid var(--verde);
-      transition: 0.2s;
-    }
-
-    .boton:hover {
-      background: #5e705e;
-    }
-
-    section {
-      padding: 62px 20px;
-      scroll-margin-top: 20px;
-    }
-
-    .encabezado {
-      text-align: center;
-      max-width: 620px;
-      margin: 0 auto 35px;
-    }
-
-    .encabezado h2 {
-      font-size: clamp(28px, 6vw, 38px);
-      font-weight: normal;
-      margin-bottom: 10px;
-    }
-
-    .encabezado p {
-      font-size: 14px;
-    }
-
-    .coleccion {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .producto {
-      background: white;
-      padding-bottom: 20px;
-      text-align: center;
-    }
-
-    .producto-imagen {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 4 / 4.5;
-      background: var(--arena);
-      color: var(--verde);
-      font-size: 42px;
-    }
-
-    .producto h3 {
-      font-size: 17px;
-      font-weight: normal;
-      margin: 17px 8px 5px;
-    }
-
-    .producto p {
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      color: #77766f;
-      padding: 0 10px;
-    }
-
-    .producto a {
-      display: inline-block;
-      margin-top: 13px;
-      border-bottom: 1px solid var(--verde);
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-    .historia {
-      background: var(--arena);
-      text-align: center;
-    }
-
-    .historia-contenido {
-      max-width: 640px;
-      margin: auto;
-    }
-
-    .historia h2 {
-      font-size: clamp(28px, 6vw, 40px);
-      font-weight: normal;
-      margin-bottom: 20px;
-    }
-
-    .historia p {
-      font-size: 15px;
-      margin-bottom: 14px;
-    }
-
-    .contacto {
-      text-align: center;
-    }
-
-    .contacto h2 {
-      font-size: clamp(28px, 6vw, 40px);
-      font-weight: normal;
-      margin-bottom: 15px;
-    }
-
-    .contacto p {
-      margin: 0 auto 25px;
-      max-width: 500px;
-    }
-
-    footer {
-      background: var(--verde);
-      color: white;
-      padding: 28px 18px;
-      text-align: center;
-      font-family: Arial, sans-serif;
-      font-size: 11px;
-      letter-spacing: 1px;
-    }
-
-    footer p + p {
-      margin-top: 7px;
-    }
-
-    @media (min-width: 700px) {
-      .portada {
-        padding: 110px 25px;
-      }
-
-      .coleccion {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 22px;
-      }
-
-      section {
-        padding: 85px 30px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#778977">
+<title>Raíz Pacará | Tienda artesanal</title>
+<style>
+:root{--v:#778977;--a:#EFECE6;--b:#F7F4EE;--t:#373B33;--m:#A88B73}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--b);color:var(--t);font-family:Georgia,serif;line-height:1.6}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+.aviso{background:var(--v);color:white;text-align:center;padding:9px;font:11px Arial;letter-spacing:1px}
+header{text-align:center;padding:25px 10px}
+.marca{font-size:clamp(32px,7vw,48px);color:var(--v);letter-spacing:2px}
+.sub{font:10px Arial;letter-spacing:4px;color:var(--m);text-transform:uppercase}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding:14px 8px;border-block:1px solid #ddd;font:11px Arial}
+.portada{text-align:center;background:var(--a);padding:70px 20px}
+.etiqueta{font:10px Arial;color:var(--m);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:clamp(35px,8vw,58px);font-weight:normal;line-height:1.2;max-width:700px;margin:0 auto 20px}
+.portada p{max-width:450px;margin:0 auto 25px}
+.boton{display:inline-block;background:var(--v);color:white;border:0;padding:12px 20px;font:11px Arial;letter-spacing:1px;cursor:pointer}
+section{padding:50px 15px;scroll-margin-top:15px}
+.enc{text-align:center;max-width:650px;margin:0 auto 28px}
+.enc h2,.historia h2,.contacto h2{font-size:clamp(27px,6vw,38px);font-weight:normal;line-height:1.25;margin-bottom:12px}
+.enc p{font-size:14px}
+.tienda{max-width:1100px;margin:auto}
+.filtros{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:22px}
+.filtros input,.filtros select{padding:10px;border:1px solid #ddd;background:white;max-width:100%}
+.filtros input{width:220px}
+.coleccion{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.producto{background:white;display:flex;flex-direction:column;padding-bottom:14px;min-width:0}
+.imagen{aspect-ratio:4/3;background:var(--a);display:flex;align-items:center;justify-content:center;color:var(--v);font-size:42px}
+.info{padding:0 12px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.producto h3{font-size:16px;font-weight:normal;margin:13px 0 5px}
+.desc{font:12px/1.55 Arial;color:#707168;margin-bottom:10px}
+.precio{font:bold 18px Arial;margin-top:auto;margin-bottom:8px}
+.estado{font:10px Arial;color:#55745a;margin-bottom:10px}
+.agregar{width:100%;border:0;background:var(--v);color:white;padding:11px 5px;font:10px Arial;cursor:pointer}
+.agregar:disabled{background:#aaa}
+.carrito{max-width:700px;background:white;margin:35px auto 0;padding:22px}
+.carrito h3{font-size:25px;font-weight:normal;margin-bottom:12px}
+.linea{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:12px 0;font:13px Arial}
+.linea button{border:0;background:none;color:#944}
+.total{display:flex;justify-content:space-between;padding:18px 0;font-size:20px}
+.form{display:grid;gap:12px;margin-top:10px}
+.form label{font:12px Arial}
+.form input,.form select,.form textarea{display:block;width:100%;margin-top:5px;padding:11px;border:1px solid #ddd;background:white;color:var(--t)}
+.form textarea{min-height:65px}
+.enviar{width:100%;border:0;background:var(--v);color:white;padding:14px;font:11px Arial;letter-spacing:1px}
+.enviar:disabled{opacity:.4}
+.nota{font:12px/1.6 Arial;color:#707168;margin-top:10px}
+.pago{background:var(--a);padding:20px;margin-top:22px;font-size:14px}
+.pago h3{font-size:22px}
+.copiar{padding:7px 10px;margin:5px 0;border:1px solid var(--v);background:transparent;color:var(--v)}
+.historia{background:var(--a);text-align:center}
+.historia-contenido{max-width:640px;margin:auto}
+.historia p{font-size:14px;margin:12px 0}
+.contacto{text-align:center}
+.contacto p{max-width:500px;margin:0 auto 20px}
+footer{background:var(--v);color:white;padding:25px;text-align:center;font:11px/1.8 Arial}
+@media(min-width:650px){.portada{padding:95px 25px}section{padding:70px 25px}.coleccion{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}}
+@media(min-width:950px){.coleccion{grid-template-columns:repeat(4,minmax(0,1fr))}}
+</style>
 </head>
-
 <body>
-  <div class="aviso">
-    HECHO A MANO · CON AMOR DESDE TUCUMÁN, ARGENTINA
-  </div>
+<div class="aviso">HECHO A MANO · CON AMOR DESDE TUCUMÁN, ARGENTINA</div>
+<header id="inicio">
+<a href="#inicio"><div class="marca">Raíz Pacará</div><div class="sub">Decoración artesanal</div></a>
+</header>
+<nav>
+<a href="#inicio">INICIO</a>
+<a href="#coleccion">TIENDA</a>
+<a href="#carrito">MI CARRITO (<span id="contador">0</span>)</a>
+<a href="#nosotras">NUESTRA ESENCIA</a>
+<a href="#contacto">CONTACTO</a>
+</nav>
 
-  <header>
-    <a href="#inicio">
-      <div class="marca">Raíz Pacará</div>
-      <div class="submarca">Decoración artesanal</div>
-    </a>
-  </header>
+<main>
+<section class="portada">
+<div class="etiqueta">Objetos con identidad</div>
+<h1>El encanto de lo hecho a mano.</h1>
+<p>Piezas artesanales para transformar tus espacios y hacer de cada rincón un lugar especial.</p>
+<a class="boton" href="#coleccion">Descubrir la colección</a>
+</section>
 
-  <nav>
-    <a href="#inicio">INICIO</a>
-    <a href="#coleccion">COLECCIÓN</a>
-    <a href="#nosotras">NUESTRA ESENCIA</a>
-    <a href="#contacto">CONTACTO</a>
-  </nav>
+<section id="coleccion">
+<div class="tienda">
+<div class="enc">
+<div class="etiqueta">Nuestra tienda online</div>
+<h2>Pequeñas piezas, grandes detalles.</h2>
+<p>Elegí tus favoritos y armá tu pedido por WhatsApp.</p>
+</div>
+<div class="filtros">
+<input id="buscar" placeholder="Buscar productos..." type="search">
+<select id="categoria">
+<option value="todos">Todas las categorías</option>
+<option value="sets">Sets decorativos</option>
+<option value="ramos">Ramos artesanales</option>
+<option value="joyeros">Joyeros</option>
+</select>
+</div>
+<div class="coleccion" id="productos"></div>
 
-  <main>
-    <section class="portada" id="inicio">
-      <div class="etiqueta">Objetos con identidad</div>
-      <h1>El encanto de lo hecho a mano.</h1>
-      <p>
-        Piezas artesanales para transformar tus espacios
-        y hacer de cada rincón un lugar especial.
-      </p>
-      <a class="boton" href="#coleccion">Descubrir la colección</a>
-    </section>
+<div class="carrito" id="carrito">
+<h3>Tu carrito</h3>
+<div id="items"><p class="nota">Todavía no agregaste productos.</p></div>
+<div class="total"><span>Total</span><strong id="total">$0</strong></div>
+<p class="nota">El envío se cotiza por WhatsApp y no está incluido en el total.</p>
+<form class="form" id="formulario">
+<label>Tu nombre<input id="nombre" required placeholder="¿Cómo te llamás?"></label>
+<label>Entrega<select id="entrega"><option>Retiro a coordinar</option><option>Envío a domicilio (costo a consultar)</option></select></label>
+<label>Localidad o dirección<input id="direccion" placeholder="Opcional"></label>
+<label>Comentarios<textarea id="comentarios" placeholder="Consulta o pedido especial"></textarea></label>
+<button class="enviar" id="enviar" type="submit" disabled>Enviar pedido por WhatsApp</button>
+</form>
 
-    <section id="coleccion">
-      <div class="encabezado">
-        <div class="etiqueta">Nuestra selección</div>
-        <h2>Pequeñas piezas, grandes detalles.</h2>
-        <p>
-          Creaciones artesanales realizadas con dedicación,
-          inspiradas en la belleza de los materiales y los detalles.
-        </p>
-      </div>
+<div class="pago">
+<h3>Pago por transferencia</h3>
+<p>Una vez confirmado el pedido, podés transferir y enviarnos el comprobante por WhatsApp.</p>
+<p style="margin-top:10px"><b>Alias:</b> iris.0509</p>
+<button class="copiar" type="button" data-copy="iris.0509">Copiar alias</button>
+<p style="overflow-wrap:anywhere"><b>CBU:</b> 4530000800015796491774</p>
+<button class="copiar" type="button" data-copy="4530000800015796491774">Copiar CBU</button>
+<p class="nota">Verificá los datos del destinatario antes de transferir.</p>
+<a class="boton" href="https://wa.me/5493813538008?text=Hola%2C%20quiero%20enviar%20el%20comprobante%20de%20mi%20pedido%20de%20Ra%C3%ADz%20Pacar%C3%A1" target="_blank" rel="noopener">Enviar comprobante</a>
+</div>
+</div>
+</div>
+</section>
 
-      <div class="coleccion">
-        <article class="producto">
-          <div class="producto-imagen">✿</div>
-          <h3>Flores en tela</h3>
-          <p>Ramos artesanales que perduran.</p>
-          <a href="#contacto">CONSULTAR</a>
-        </article>
+<section class="historia" id="nosotras">
+<div class="historia-contenido">
+<div class="etiqueta">La esencia de nuestra marca</div>
+<h2>Una raíz que inspira. Una pieza que cuenta.</h2>
+<p>Raíz Pacará nace del amor por crear con las manos, de encontrar belleza en los detalles y de darle vida a objetos únicos.</p>
+<p>Cada pieza lleva tiempo, dedicación y una historia. Queremos que encuentres en ellas algo que conecte con tu forma de habitar y sentir tu hogar.</p>
+</div>
+</section>
 
-        <article class="producto">
-          <div class="producto-imagen">◈</div>
-          <h3>Cuadros artesanales</h3>
-          <p>Arte en puntillismo y mosaiquismo.</p>
-          <a href="#contacto">CONSULTAR</a>
-        </article>
+<section class="contacto" id="contacto">
+<div class="etiqueta">Estamos para ayudarte</div>
+<h2>¿Buscás una pieza especial?</h2>
+<p>Escribinos para consultar por disponibilidad, envíos o pedidos personalizados.</p>
+<a class="boton" href="https://wa.me/5493813538008?text=Hola%2C%20quiero%20consultar%20por%20Ra%C3%ADz%20Pacar%C3%A1" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+<p style="margin-top:22px">También podés encontrarnos en Instagram.</p>
+<a class="boton" href="https://www.instagram.com/raizpacara.artesanias/" target="_blank" rel="noopener">Ver Instagram</a>
+</section>
+</main>
 
-        <article class="producto">
-          <div class="producto-imagen">◯</div>
-          <h3>Espejos decorativos</h3>
-          <p>Detalles que realzan tus espacios.</p>
-          <a href="#contacto">CONSULTAR</a>
-        </article>
+<footer>
+<p>Raíz Pacará · Decoración artesanal</p>
+<p>Tucumán, Argentina</p>
+<p>Hecho a mano, con dedicación.</p>
+</footer>
 
-        <article class="producto">
-          <div class="producto-imagen">♧</div>
-          <h3>Lámparas</h3>
-          <p>Luz y calidez para tu hogar.</p>
-          <a href="#contacto">CONSULTAR</a>
-        </article>
+<script>
+const WHATSAPP="5493813538008";
 
-        <article class="producto">
-          <div class="producto-imagen">❋</div>
-          <h3>Floreros de yeso</h3>
-          <p>Formas artesanales para decorar.</p>
-          <a href="#contacto">CONSULTAR</a>
-        </article>
+const productos=[
+{id:1,n:"SET LOTO",p:25000,c:"sets",i:"✿",d:"Bandeja ovalada, florero esbelto y cuenco loto. Un refugio de serenidad para tus rincones. No incluye ramillete floral."},
+{id:2,n:"SET BOTANICO",p:25000,c:"sets",i:"❋",d:"Bandeja ovalada, florero texturizado y cuenco decorativo. Calidez atemporal para tu hogar."},
+{id:3,n:"SET PAUSA",p:23000,c:"sets",i:"◈",d:"Bandeja ovalada, florero estriado y escultura decorativa. Ideal para escritorios, bibliotecas o mesas de noche. No incluye ramo floral."},
+{id:4,n:"SET RESGUARDO",p:27000,c:"sets",i:"◇",d:"Bandeja base, florero estriado y contenedor con tapa de textura acanalada. No incluye ramillete floral."},
+{id:5,n:"SET ABRA",p:20000,c:"sets",i:"❀",d:"Bandeja base, florero estriado y cuenco con delicado relieve tejido. No incluye ramillete floral."},
+{id:6,n:"SET PENSADOR",p:23000,c:"sets",i:"◉",d:"Bandeja base, florero estriado y escultura de líneas finas. No incluye ramillete floral."},
+{id:7,n:"RAMO SILVESTRE",p:15000,c:"ramos",i:"❋",d:"Flores de tela hechas a mano en tonos neutros y salmón, follaje preservado e hilos naturales."},
+{id:8,n:"RAMO ARENA",p:15000,c:"ramos",i:"✿",d:"Flores de tela beige y arena, eucalipto preservado y delicadas espigas."},
+{id:9,n:"RAMO CARDO",p:15000,c:"ramos",i:"❀",d:"Flores de tela beige, cardo preservado magenta, eucalipto y pequeñas flores blancas."},
+{id:10,n:"RAMO TRAMA",p:15000,c:"ramos",i:"♧",d:"Flores de tela beige y arena, arpillera natural, plumitas secas y eucalipto preservado."},
+{id:11,n:"JOYERO NIDO",p:3000,c:"joyeros",i:"◇",d:"Joyero artesanal. Medidas: 17 × 9 cm."},
+{id:12,n:"JOYERO NIDO 2",p:5000,c:"joyeros",i:"◈",d:"Joyero artesanal. Medidas: 24 × 11,9 cm."},
+{id:13,n:"SET GOTA",p:23000,c:"sets",i:"◉",d:"Bandeja ovalada, florero de curvas estilizadas y figura del Pensador. No incluye ramillete floral."},
+{id:14,n:"SET VERTIENTE",p:25000,c:"sets",i:"❀",d:"Bandeja ovalada, florero de líneas curvas y cuenco con forma de flor. No incluye ramillete floral."},
+{id:15,n:"SET SOMBRA",p:23000,c:"sets",i:"◉",d:"Bandeja base ovalada, florero de curvas estilizadas y figura del Pensador. No incluye ramillete floral."},
+{id:16,n:"SET SENDA",p:25000,c:"sets",i:"◇",d:"Bandeja ovalada, florero de silueta fluida y contenedor multifunción en relieve. Puede usarse como portavela, porta sahumerios o contenedor. No incluye flores."}
+];
 
-        <article class="producto">
-          <div class="producto-imagen">♡</div>
-          <h3>Creaciones especiales</h3>
-          <p>Consultanos por pedidos personalizados.</p>
-          <a href="#contacto">CONSULTAR</a>
-        </article>
-      </div>
-    </section>
+let carrito={};
+const plata=n=>"$"+n.toLocaleString("es-AR");
 
-    <section class="historia" id="nosotras">
-      <div class="historia-contenido">
-        <div class="etiqueta">La esencia de nuestra marca</div>
-        <h2>Una raíz que inspira. Una pieza que cuenta.</h2>
-        <p>
-          Raíz Pacará nace del amor por crear con las manos,
-          de encontrar belleza en los detalles y de darle
-          vida a objetos únicos.
-        </p>
-        <p>
-          Cada pieza lleva tiempo, dedicación y una historia.
-          Queremos que encuentres en ellas algo que conecte
-          con tu forma de habitar y sentir tu hogar.
-        </p>
-      </div>
-    </section>
+function mostrarProductos(){
+ const bus=document.getElementById("buscar").value.toLowerCase().trim();
+ const cat=document.getElementById("categoria").value;
+ const lista=productos.filter(p=>p.n.toLowerCase().includes(bus)&&(cat==="todos"||p.c===cat));
+ const cont=document.getElementById("productos");
+ cont.innerHTML="";
+ if(!lista.length){cont.textContent="No encontramos productos con esa búsqueda.";return}
+ lista.forEach(p=>{
+  const art=document.createElement("article");art.className="producto";
+  const img=document.createElement("div");img.className="imagen";img.textContent=p.i;
+  const info=document.createElement("div");info.className="info";
+  const h=document.createElement("h3");h.textContent=p.n;
+  const d=document.createElement("p");d.className="desc";d.textContent=p.d;
+  const precio=document.createElement("p");precio.className="precio";precio.textContent=plata(p.p);
+  const estado=document.createElement("p");estado.className="estado";estado.textContent="● Disponible";
+  const btn=document.createElement("button");btn.className="agregar";btn.textContent="Agregar al carrito";
+  btn.onclick=()=>{carrito[p.id]=(carrito[p.id]||0)+1;mostrarCarrito();};
+  info.append(h,d,precio,estado,btn);art.append(img,info);cont.append(art);
+ });
+}
 
-    <section class="contacto" id="contacto">
-      <div class="etiqueta">Estamos para ayudarte</div>
-      <h2>¿Buscás una pieza especial?</h2>
-      <p>
-        Escribinos para consultar por nuestras creaciones,
-        disponibilidad o pedidos personalizados.
-      </p>
+function mostrarCarrito(){
+ const items=document.getElementById("items");items.innerHTML="";
+ let unidades=0,total=0;
+ productos.forEach(p=>{
+  const cantidad=carrito[p.id]||0;
+  if(!cantidad)return;
+  unidades+=cantidad;total+=cantidad*p.p;
+  const fila=document.createElement("div");fila.className="linea";
+  const texto=document.createElement("div");
+  texto.textContent=p.n+" × "+cantidad+" — "+plata(p.p*cantidad);
+  const quitar=document.createElement("button");quitar.type="button";quitar.textContent="Quitar";
+  quitar.onclick=()=>{delete carrito[p.id];mostrarCarrito();};
+  fila.append(texto,quitar);items.append(fila);
+ });
+ if(!unidades)items.innerHTML='<p class="nota">Todavía no agregaste productos.</p>';
+ document.getElementById("total").textContent=plata(total);
+ document.getElementById("contador").textContent=unidades;
+ document.getElementById("enviar").disabled=unidades===0;
+}
 
-      <a class="boton"
-         href="https://wa.me/543813534008?text=Hola%2C%20quiero%20consultar%20por%20Ra%C3%ADz%20Pacar%C3%A1"
-         target="_blank" rel="noopener">
-        Hablar por WhatsApp
-      </a>
+document.getElementById("buscar").addEventListener("input",mostrarProductos);
+document.getElementById("categoria").addEventListener("change",mostrarProductos);
 
-      <p style="margin-top: 22px; font-size: 13px;">
-        También podés encontrarnos en Instagram.
-      </p>
+document.getElementById("formulario").addEventListener("submit",function(e){
+ e.preventDefault();
+ const seleccion=productos.filter(p=>carrito[p.id]);
+ if(!seleccion.length){alert("Agregá al menos un producto al carrito.");return;}
+ const nombre=document.getElementById("nombre").value.trim();
+ const entrega=document.getElementById("entrega").value;
+ const direccion=document.getElementById("direccion").value.trim();
+ const comentarios=document.getElementById("comentarios").value.trim();
+ let total=0;
+ let mensaje="Hola, quiero realizar un pedido en Raíz Pacará.\n\nNombre: "+nombre+"\n\n";
+ seleccion.forEach(p=>{
+  const cantidad=carrito[p.id];const subtotal=p.p*cantidad;total+=subtotal;
+  mensaje+=p.n+" x "+cantidad+" = "+plata(subtotal)+"\n";
+ });
+ mensaje+="\nTOTAL DE PRODUCTOS: "+plata(total);
+ mensaje+="\nEntrega: "+entrega;
+ if(direccion)mensaje+="\nDirección/localidad: "+direccion;
+ if(comentarios)mensaje+="\nComentarios: "+comentarios;
+ mensaje+="\n\nQuedo a la espera de confirmar disponibilidad, envío y datos de pago.";
+ window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(mensaje),"_blank");
+});
 
-      <a class="boton"
-         href="https://www.instagram.com/raizpacara.artesanias/"
-         target="_blank" rel="noopener"
-         style="margin-top: 5px;">
-        Ver Instagram
-      </a>
-    </section>
-  </main>
+document.querySelectorAll("[data-copy]").forEach(btn=>{
+ btn.addEventListener("click",async()=>{
+  const texto=btn.dataset.copy;
+  try{
+   await navigator.clipboard.writeText(texto);
+   btn.textContent="¡Copiado!";
+  }catch(e){
+   window.prompt("Copiá este dato:",texto);
+  }
+ });
+});
 
-  <footer>
-    <p>Raíz Pacará · Decoración artesanal</p>
-    <p>Tucumán, Argentina</p>
-    <p>Hecho a mano, con dedicación.</p>
-  </footer>
+mostrarProductos();
+mostrarCarrito();
+</script>
 </body>
 </html>
