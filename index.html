@@ -1,279 +1,2090 @@
-
-const UMBRAL_PROMOCION = 70000;
-
-const subtotal = /* suma de los productos del carrito */;
-
-const tieneDescuento = subtotal > UMBRAL_PROMOCION;
-const descuento = tieneDescuento ? subtotal * 0.10 : 0;
-const total = subtotal - descuento;
-
-// Envío gratis solo dentro de San Miguel de Tucumán
-const envioGratis =
-  tieneDescuento &&
-  localidad === "San Miguel de Tucumán";
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#778977">
-<title>Raíz Pacará | Tienda artesanal</title>
-<style>
-:root{--v:#778977;--a:#EFECE6;--b:#F7F4EE;--t:#373B33;--m:#A88B73}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--b);color:var(--t);font-family:Georgia,serif;line-height:1.6}
-a{color:inherit;text-decoration:none}
-button,input,select,textarea{font:inherit}
-.aviso{background:var(--v);color:white;text-align:center;padding:9px;font:11px Arial;letter-spacing:1px}
-header{text-align:center;padding:25px 10px}
-.marca{font-size:clamp(32px,7vw,48px);color:var(--v);letter-spacing:2px}
-.sub{font:10px Arial;letter-spacing:4px;color:var(--m);text-transform:uppercase}
-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:16px;padding:14px 8px;border-block:1px solid #ddd;font:11px Arial}
-.portada{text-align:center;background:var(--a);padding:70px 20px}
-.etiqueta{font:10px Arial;color:var(--m);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px}
-h1{font-size:clamp(35px,8vw,58px);font-weight:normal;line-height:1.2;max-width:700px;margin:0 auto 20px}
-.portada p{max-width:450px;margin:0 auto 25px}
-.boton{display:inline-block;background:var(--v);color:white;border:0;padding:12px 20px;font:11px Arial;letter-spacing:1px;cursor:pointer}
-section{padding:50px 15px;scroll-margin-top:15px}
-.enc{text-align:center;max-width:650px;margin:0 auto 28px}
-.enc h2,.historia h2,.contacto h2{font-size:clamp(27px,6vw,38px);font-weight:normal;line-height:1.25;margin-bottom:12px}
-.enc p{font-size:14px}
-.tienda{max-width:1100px;margin:auto}
-.filtros{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:22px}
-.filtros input,.filtros select{padding:10px;border:1px solid #ddd;background:white;max-width:100%}
-.filtros input{width:220px}
-.coleccion{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.producto{background:white;display:flex;flex-direction:column;padding-bottom:14px;min-width:0}
-.imagen{aspect-ratio:4/3;background:var(--a);display:flex;align-items:center;justify-content:center;color:var(--v);font-size:42px}
-.info{padding:0 12px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
-.producto h3{font-size:16px;font-weight:normal;margin:13px 0 5px}
-.desc{font:12px/1.55 Arial;color:#707168;margin-bottom:10px}
-.precio{font:bold 18px Arial;margin-top:auto;margin-bottom:8px}
-.estado{font:10px Arial;color:#55745a;margin-bottom:10px}
-.agregar{width:100%;border:0;background:var(--v);color:white;padding:11px 5px;font:10px Arial;cursor:pointer}
-.agregar:disabled{background:#aaa}
-.carrito{max-width:700px;background:white;margin:35px auto 0;padding:22px}
-.carrito h3{font-size:25px;font-weight:normal;margin-bottom:12px}
-.linea{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:12px 0;font:13px Arial}
-.linea button{border:0;background:none;color:#944}
-.total{display:flex;justify-content:space-between;padding:18px 0;font-size:20px}
-.form{display:grid;gap:12px;margin-top:10px}
-.form label{font:12px Arial}
-.form input,.form select,.form textarea{display:block;width:100%;margin-top:5px;padding:11px;border:1px solid #ddd;background:white;color:var(--t)}
-.form textarea{min-height:65px}
-.enviar{width:100%;border:0;background:var(--v);color:white;padding:14px;font:11px Arial;letter-spacing:1px}
-.enviar:disabled{opacity:.4}
-.nota{font:12px/1.6 Arial;color:#707168;margin-top:10px}
-.pago{background:var(--a);padding:20px;margin-top:22px;font-size:14px}
-.pago h3{font-size:22px}
-.copiar{padding:7px 10px;margin:5px 0;border:1px solid var(--v);background:transparent;color:var(--v)}
-.historia{background:var(--a);text-align:center}
-.historia-contenido{max-width:640px;margin:auto}
-.historia p{font-size:14px;margin:12px 0}
-.contacto{text-align:center}
-.contacto p{max-width:500px;margin:0 auto 20px}
-footer{background:var(--v);color:white;padding:25px;text-align:center;font:11px/1.8 Arial}
-@media(min-width:650px){.portada{padding:95px 25px}section{padding:70px 25px}.coleccion{grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}}
-@media(min-width:950px){.coleccion{grid-template-columns:repeat(4,minmax(0,1fr))}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f4ef">
+  <meta name="description" content="Raíz Pacará: decoración artesanal, flores en tela y piezas hechas a mano en Tucumán, Argentina.">
+  <title>Raíz Pacará | Decoración artesanal</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --cream: #f7f4ef;
+      --white: #fffefa;
+      --text: #3b3a36;
+      --muted: #77746d;
+      --olive: #778977;
+      --olive-dark: #586858;
+      --sand: #e6dfd5;
+      --line: #e8e2d9;
+      --soft: #f0ebe3;
+      --shadow: 0 8px 28px rgba(59, 58, 54, .07);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 95px;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--cream);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+
+    body.no-scroll { overflow: hidden; }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    button, a, select { -webkit-tap-highlight-color: transparent; }
+
+    button { cursor: pointer; }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .serif { font-family: "Playfair Display", serif; }
+
+    .announcement {
+      padding: 8px 16px;
+      text-align: center;
+      background: var(--olive-dark);
+      color: white;
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(247, 244, 239, .96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      max-width: 1240px;
+      margin: auto;
+      min-height: 78px;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      letter-spacing: .045em;
+      color: var(--olive-dark);
+    }
+
+    .brand-subtitle {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      font-size: 13px;
+    }
+
+    .nav > a, .nav summary {
+      color: var(--text);
+      transition: color .2s;
+      cursor: pointer;
+      list-style: none;
+      white-space: nowrap;
+    }
+
+    .nav > a:hover, .nav summary:hover { color: var(--olive-dark); }
+
+    .nav summary::-webkit-details-marker { display: none; }
+
+    .nav summary::after {
+      content: "⌄";
+      margin-left: 5px;
+    }
+
+    .nav details { position: relative; }
+
+    .dropdown {
+      position: absolute;
+      top: calc(100% + 18px);
+      left: -15px;
+      min-width: 230px;
+      padding: 10px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .dropdown button {
+      border: 0;
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+    }
+
+    .dropdown button:hover { background: var(--soft); }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .cart-button {
+      border: 1px solid var(--olive);
+      color: var(--olive-dark);
+      background: transparent;
+      border-radius: 100px;
+      padding: 10px 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    .cart-count {
+      display: inline-grid;
+      place-items: center;
+      min-width: 21px;
+      height: 21px;
+      padding: 0 5px;
+      border-radius: 50px;
+      color: white;
+      background: var(--olive-dark);
+      font-size: 11px;
+    }
+
+    .mobile-menu-button { display: none; }
+
+    .hero {
+      max-width: 1240px;
+      padding: 70px 24px 62px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--olive-dark);
+      font-size: 11px;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      display: inline-block;
+      width: 27px;
+      height: 1px;
+      background: var(--olive);
+    }
+
+    .hero h1 {
+      max-width: 590px;
+      margin: 18px 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 5.3vw, 70px);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -.025em;
+    }
+
+    .hero h1 em {
+      color: var(--olive-dark);
+      font-weight: 400;
+    }
+
+    .hero-copy {
+      max-width: 490px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .hero-buttons {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 100px;
+      border: 1px solid var(--olive-dark);
+      background: var(--olive-dark);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button.secondary {
+      background: transparent;
+      color: var(--olive-dark);
+    }
+
+    .button.light {
+      border-color: var(--line);
+      background: var(--white);
+      color: var(--text);
+    }
+
+    .hero-art {
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 46% 46% 18px 18px;
+      background:
+        radial-gradient(ellipse at 50% 25%, rgba(255,255,255,.8), transparent 48%),
+        linear-gradient(145deg, #e6dfd5, #d6d8c9 70%, #c9cdbd);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 25px;
+    }
+
+    .hero-art::before, .hero-art::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(88,104,88,.28);
+      border-radius: 50%;
+      width: 290px;
+      height: 390px;
+      transform: rotate(35deg);
+    }
+
+    .hero-art::after {
+      width: 220px;
+      height: 330px;
+      transform: rotate(-35deg);
+    }
+
+    .hero-art-text {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: var(--olive-dark);
+    }
+
+    .hero-art-text span {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(28px, 3vw, 42px);
+      line-height: 1.2;
+    }
+
+    .hero-art-text small {
+      display: block;
+      margin-top: 15px;
+      font-size: 10px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .benefits {
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .benefits-inner {
+      max-width: 1240px;
+      margin: auto;
+      padding: 22px 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      text-align: center;
+    }
+
+    .benefit {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .benefit strong {
+      display: block;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .section {
+      max-width: 1240px;
+      margin: auto;
+      padding: 82px 24px;
+    }
+
+    .section-heading {
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 20px;
+    }
+
+    .section-heading h2, .center-heading h2 {
+      margin: 10px 0 7px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(31px, 4vw, 43px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .section-heading p, .center-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .center-heading {
+      max-width: 690px;
+      margin: 0 auto 34px;
+      text-align: center;
+    }
+
+    .center-heading .eyebrow { justify-content: center; }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 25px 0 20px;
+    }
+
+    .filter {
+      border: 1px solid #dcd6cc;
+      border-radius: 100px;
+      background: transparent;
+      color: var(--text);
+      padding: 9px 15px;
+      font-size: 12px;
+      transition: all .2s;
+    }
+
+    .filter:hover, .filter.active {
+      background: var(--olive-dark);
+      border-color: var(--olive-dark);
+      color: white;
+    }
+
+    .catalog-tools {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+
+    .catalog-tools p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .catalog-tools select {
+      max-width: 100%;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--text);
+      background: var(--white);
+      font-size: 12px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 22px 17px;
+    }
+
+    .product-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--white);
+      transition: transform .25s, box-shadow .25s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .product-image {
+      position: relative;
+      aspect-ratio: 4 / 3.7;
+      overflow: hidden;
+      background: #e9e4db;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s;
+    }
+
+    .product-card:hover .product-image img { transform: scale(1.035); }
+
+    .product-image.sin-imagen {
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse at 50% 40%, #f7f4ef, transparent 60%),
+        linear-gradient(135deg, #e7e0d5, #d9dfd2);
+    }
+
+    .image-fallback {
+      display: none;
+      color: var(--olive-dark);
+      text-align: center;
+      font-family: "Playfair Display", serif;
+      font-size: 23px;
+      padding: 18px;
+    }
+
+    .sin-imagen .image-fallback { display: block; }
+
+    .product-category {
+      position: absolute;
+      left: 12px;
+      top: 12px;
+      z-index: 1;
+      padding: 5px 9px;
+      border-radius: 100px;
+      background: rgba(255,254,250,.92);
+      color: var(--olive-dark);
+      font-size: 10px;
+      letter-spacing: .025em;
+    }
+
+    .product-info { padding: 16px; }
+
+    .product-info h3 {
+      margin: 0 0 7px;
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.3;
+    }
+
+    .product-description {
+      min-height: 61px;
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .product-price {
+      margin-bottom: 13px;
+      color: var(--olive-dark);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .product-add {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--olive-dark);
+      border-radius: 100px;
+      background: transparent;
+      color: var(--olive-dark);
+      font-size: 12px;
+      font-weight: 600;
+      transition: background .2s, color .2s;
+    }
+
+    .product-add:hover {
+      background: var(--olive-dark);
+      color: white;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 55px 20px;
+      text-align: center;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .empty-state h3 {
+      margin: 0 0 10px;
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      font-weight: 400;
+    }
+
+    .empty-state p {
+      max-width: 480px;
+      margin: 0 auto 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .payment-strip {
+      margin-top: 32px;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      background: var(--soft);
+      border-radius: 14px;
+    }
+
+    .payment-strip strong { font-size: 13px; }
+
+    .payment-strip p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .text-link {
+      padding: 0;
+      border: 0;
+      border-bottom: 1px solid var(--olive);
+      background: transparent;
+      color: var(--olive-dark);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .story-section {
+      background: #e9e8df;
+    }
+
+    .story-inner {
+      max-width: 1050px;
+      margin: auto;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      align-items: center;
+      gap: 65px;
+    }
+
+    .story-mark {
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      border-radius: 48% 48% 18px 18px;
+      border: 1px solid rgba(88,104,88,.28);
+      background: rgba(255,254,250,.35);
+      text-align: center;
+    }
+
+    .story-mark span {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(35px, 4vw, 48px);
+      color: var(--olive-dark);
+      line-height: 1.2;
+    }
+
+    .story-copy h2 {
+      margin: 13px 0 23px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(34px, 4vw, 44px);
+      font-weight: 400;
+      line-height: 1.2;
+    }
+
+    .story-copy p {
+      margin: 0 0 16px;
+      color: #64645c;
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    .personalized-section {
+      background: var(--white);
+    }
+
+    .personalized-inner {
+      max-width: 980px;
+      margin: auto;
+      padding: 78px 24px;
+      text-align: center;
+    }
+
+    .personalized-inner h2 {
+      margin: 12px 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 400;
+    }
+
+    .personalized-copy {
+      max-width: 680px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .occasion-list {
+      margin: 25px 0 28px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 9px;
+    }
+
+    .occasion {
+      padding: 9px 15px;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      background: var(--cream);
+      color: var(--olive-dark);
+      font-size: 12px;
+    }
+
+    .contact-section {
+      padding: 75px 24px;
+      background: var(--olive-dark);
+      color: white;
+      text-align: center;
+    }
+
+    .contact-section .eyebrow { color: #e1e6d9; }
+    .contact-section .eyebrow::before { background: #c7d0bd; }
+
+    .contact-section h2 {
+      margin: 13px 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(35px, 4vw, 46px);
+      font-weight: 400;
+    }
+
+    .contact-section p {
+      max-width: 540px;
+      margin: 0 auto;
+      color: #e2e5dc;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .contact-buttons {
+      margin-top: 26px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .contact-section .button {
+      background: var(--white);
+      border-color: var(--white);
+      color: var(--olive-dark);
+    }
+
+    .contact-section .button.secondary {
+      background: transparent;
+      border-color: rgba(255,255,255,.6);
+      color: white;
+    }
+
+    .footer {
+      background: #eeebe4;
+      padding: 30px 24px;
+    }
+
+    .footer-inner {
+      max-width: 1240px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .footer-brand {
+      font-family: "Playfair Display", serif;
+      color: var(--olive-dark);
+      font-size: 21px;
+    }
+
+    .footer small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 17px;
+      font-size: 12px;
+    }
+
+    .footer-links a:hover { color: var(--olive-dark); }
+
+    /* Carrito */
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(37,38,32,.48);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .25s, visibility .25s;
+    }
+
+    .overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 101;
+      width: min(470px, 100%);
+      height: 100dvh;
+      padding: 22px;
+      overflow-y: auto;
+      background: var(--cream);
+      transform: translateX(100%);
+      transition: transform .28s ease;
+    }
+
+    .cart-panel.open { transform: translateX(0); }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-header h2 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: 29px;
+      font-weight: 400;
+    }
+
+    .icon-button {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--text);
+      font-size: 20px;
+    }
+
+    .cart-empty {
+      padding: 45px 10px;
+      text-align: center;
+    }
+
+    .cart-empty p { color: var(--muted); font-size: 13px; }
+
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px 0;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .cart-item h3 {
+      margin: 0 0 4px;
+      font-size: 14px;
+    }
+
+    .cart-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .cart-item-total {
+      margin-top: 5px;
+      color: var(--olive-dark);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 9px;
+      margin-top: 8px;
+    }
+
+    .quantity-control button {
+      width: 27px;
+      height: 27px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: var(--white);
+      color: var(--text);
+    }
+
+    .quantity-control .remove-item {
+      width: auto;
+      border: 0;
+      color: #916b60;
+      background: transparent;
+      font-size: 11px;
+      text-decoration: underline;
+    }
+
+    .cart-summary {
+      margin-top: 10px;
+      padding: 16px;
+      border-radius: 13px;
+      background: var(--white);
+      border: 1px solid var(--line);
+    }
+
+    .summary-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 8px 0;
+      font-size: 13px;
+    }
+
+    .summary-line.discount { color: var(--olive-dark); }
+
+    .summary-line.total {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .promotion-note {
+      margin-top: 12px;
+      padding: 11px 12px;
+      border-radius: 9px;
+      background: var(--soft);
+      color: var(--olive-dark);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .checkout-form {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .field input, .field select, .field textarea {
+      width: 100%;
+      min-height: 43px;
+      padding: 10px 12px;
+      border: 1px solid #dcd6cc;
+      border-radius: 9px;
+      background: var(--white);
+      color: var(--text);
+      outline-color: var(--olive);
+      font-size: 13px;
+    }
+
+    .field textarea {
+      min-height: 75px;
+      resize: vertical;
+    }
+
+    .field-help {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .checkout-form .button {
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .payment-details {
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--white);
+    }
+
+    .payment-details h3 {
+      margin: 0 0 10px;
+      font-family: "Playfair Display", serif;
+      font-size: 20px;
+      font-weight: 400;
+    }
+
+    .payment-details p {
+      margin: 7px 0;
+      font-size: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .copy-button {
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 100px;
+      background: var(--cream);
+      color: var(--olive-dark);
+      font-size: 11px;
+    }
+
+    .payment-warning {
+      margin-top: 12px !important;
+      color: var(--muted);
+      font-size: 11px !important;
+      line-height: 1.6;
+    }
+
+    .toast {
+      position: fixed;
+      z-index: 200;
+      left: 50%;
+      bottom: 24px;
+      max-width: calc(100% - 32px);
+      padding: 12px 18px;
+      border-radius: 100px;
+      background: var(--text);
+      color: white;
+      font-size: 12px;
+      text-align: center;
+      transform: translate(-50%, 20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: .2s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 1000px) {
+      .nav { gap: 12px; font-size: 12px; }
+      .brand-name { font-size: 23px; }
+      .header-inner { gap: 13px; }
+      .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero { gap: 30px; }
+    }
+
+    @media (max-width: 760px) {
+      html { scroll-padding-top: 78px; }
+
+      .announcement { font-size: 10px; }
+
+      .header-inner {
+        min-height: 70px;
+        padding: 10px 16px;
+        flex-wrap: wrap;
+      }
+
+      .brand-name { font-size: 22px; }
+      .brand-subtitle { font-size: 9px; }
+
+      .mobile-menu-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 39px;
+        height: 39px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: transparent;
+        color: var(--text);
+        font-size: 21px;
+      }
+
+      .header-actions { margin-left: auto; gap: 7px; }
+
+      .cart-button { padding: 8px 10px; font-size: 12px; }
+
+      .nav {
+        display: none;
+        order: 5;
+        width: 100%;
+        padding: 12px 0 5px;
+        align-items: stretch;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .nav.mobile-open { display: flex; }
+
+      .nav > a, .nav summary {
+        display: block;
+        padding: 12px 6px;
+        border-top: 1px solid var(--line);
+      }
+
+      .dropdown {
+        position: static;
+        box-shadow: none;
+        border-radius: 10px;
+        margin: 0 0 8px;
+        background: #f1eee7;
+      }
+
+      .hero {
+        padding: 49px 19px 42px;
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .hero h1 { font-size: clamp(42px, 11vw, 61px); }
+
+      .hero-copy { font-size: 14px; }
+
+      .hero-art { min-height: 285px; }
+
+      .benefits-inner {
+        padding: 19px 12px;
+        gap: 10px;
+      }
+
+      .benefit { font-size: 10px; }
+      .benefit strong { font-size: 11px; }
+
+      .section { padding: 58px 16px; }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+
+      .product-info { padding: 12px; }
+      .product-info h3 { font-size: 17px; }
+      .product-description { min-height: 84px; font-size: 11px; }
+      .product-price { font-size: 16px; }
+      .product-add { padding: 10px 7px; font-size: 11px; }
+      .product-category { left: 7px; top: 7px; font-size: 9px; }
+
+      .catalog-tools { align-items: flex-start; flex-direction: column; }
+
+      .story-inner {
+        padding: 56px 19px;
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .story-mark { min-height: 240px; }
+
+      .personalized-inner { padding: 57px 19px; }
+      .contact-section { padding: 58px 19px; }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+      }
+    }
+
+    @media (max-width: 370px) {
+      .brand-name { font-size: 19px; }
+      .brand-subtitle { letter-spacing: .06em; }
+      .cart-button { gap: 5px; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-description { min-height: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
+
 <body>
-<div class="aviso">HECHO A MANO · CON AMOR DESDE TUCUMÁN, ARGENTINA</div>
-<header id="inicio">
-<a href="#inicio"><div class="marca">Raíz Pacará</div><div class="sub">Decoración artesanal</div></a>
-</header>
-<nav>
-<a href="#inicio">INICIO</a>
-<a href="#coleccion">TIENDA</a>
-<a href="#carrito">MI CARRITO (<span id="contador">0</span>)</a>
-<a href="#nosotras">NUESTRA ESENCIA</a>
-<a href="#contacto">CONTACTO</a>
-</nav>
+  <div class="announcement">
+    Hecho a mano en Tucumán · Cada pieza tiene su propia historia
+  </div>
 
-<main>
-<section class="portada">
-<div class="etiqueta">Objetos con identidad</div>
-<h1>El encanto de lo hecho a mano.</h1>
-<p>Piezas artesanales para transformar tus espacios y hacer de cada rincón un lugar especial.</p>
-<a class="boton" href="#coleccion">Descubrir la colección</a>
-</section>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="Raíz Pacará, inicio">
+        <span class="brand-name">RAÍZ PACARÁ</span>
+        <span class="brand-subtitle">Decoración artesanal & flores en tela</span>
+      </a>
 
-<section id="coleccion">
-<div class="tienda">
-<div class="enc">
-<div class="etiqueta">Nuestra tienda online</div>
-<h2>Pequeñas piezas, grandes detalles.</h2>
-<p>Elegí tus favoritos y armá tu pedido por WhatsApp.</p>
-</div>
-<div class="filtros">
-<input id="buscar" placeholder="Buscar productos..." type="search">
-<select id="categoria">
-<option value="todos">Todas las categorías</option>
-<option value="sets">Sets decorativos</option>
-<option value="ramos">Ramos artesanales</option>
-<option value="joyeros">Joyeros</option>
-</select>
-</div>
-<div class="coleccion" id="productos"></div>
+      <button class="mobile-menu-button" id="mobileMenuButton" aria-label="Abrir menú" aria-expanded="false">☰</button>
 
-<div class="carrito" id="carrito">
-<h3>Tu carrito</h3>
-<div id="items"><p class="nota">Todavía no agregaste productos.</p></div>
-<div class="total"><span>Total</span><strong id="total">$0</strong></div>
-<p class="nota">El envío se cotiza por WhatsApp y no está incluido en el total.</p>
-<form class="form" id="formulario">
-<label>Tu nombre<input id="nombre" required placeholder="¿Cómo te llamás?"></label>
-<label>Entrega<select id="entrega"><option>Retiro a coordinar</option><option>Envío a domicilio (costo a consultar)</option></select></label>
-<label>Localidad o dirección<input id="direccion" placeholder="Opcional"></label>
-<label>Comentarios<textarea id="comentarios" placeholder="Consulta o pedido especial"></textarea></label>
-<button class="enviar" id="enviar" type="submit" disabled>Enviar pedido por WhatsApp</button>
-</form>
+      <nav class="nav" id="mainNav" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
 
-<div class="pago">
-<h3>Pago por transferencia</h3>
-<p>Una vez confirmado el pedido, podés transferir y enviarnos el comprobante por WhatsApp.</p>
-<p style="margin-top:10px"><b>Alias:</b> iris.0509</p>
-<button class="copiar" type="button" data-copy="iris.0509">Copiar alias</button>
-<p style="overflow-wrap:anywhere"><b>CBU:</b> 4530000800015796491774</p>
-<button class="copiar" type="button" data-copy="4530000800015796491774">Copiar CBU</button>
-<p class="nota">Verificá los datos del destinatario antes de transferir.</p>
-<a class="boton" href="https://wa.me/5493813538008?text=Hola%2C%20quiero%20enviar%20el%20comprobante%20de%20mi%20pedido%20de%20Ra%C3%ADz%20Pacar%C3%A1" target="_blank" rel="noopener">Enviar comprobante</a>
-</div>
-</div>
-</div>
-</section>
+        <details id="productsMenu">
+          <summary>Productos</summary>
+          <div class="dropdown">
+            <button type="button" data-category="ramos">Ramos de flores en tela</button>
+            <button type="button" data-category="sets">Sets de decoración</button>
+            <button type="button" data-category="floreros">Floreros</button>
+            <button type="button" data-category="bandejas">Bandejas</button>
+            <button type="button" data-category="adornos">Joyeros, adornos y otros</button>
+            <button type="button" data-category="espejos">Espejos</button>
+            <button type="button" data-category="difusores">Difusores</button>
+            <button type="button" data-category="velas">Velas</button>
+            <button type="button" data-category="jabones">Jabones artesanales</button>
+          </div>
+        </details>
 
-<section class="historia" id="nosotras">
-<div class="historia-contenido">
-<div class="etiqueta">La esencia de nuestra marca</div>
-<h2>Una raíz que inspira. Una pieza que cuenta.</h2>
-<p>Raíz Pacará nace del amor por crear con las manos, de encontrar belleza en los detalles y de darle vida a objetos únicos.</p>
-<p>Cada pieza lleva tiempo, dedicación y una historia. Queremos que encuentres en ellas algo que conecte con tu forma de habitar y sentir tu hogar.</p>
-</div>
-</section>
+        <a href="#personalizados">Personalizados</a>
+        <a href="#nosotras">Quiénes somos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
 
-<section class="contacto" id="contacto">
-<div class="etiqueta">Estamos para ayudarte</div>
-<h2>¿Buscás una pieza especial?</h2>
-<p>Escribinos para consultar por disponibilidad, envíos o pedidos personalizados.</p>
-<a class="boton" href="https://wa.me/5493813538008?text=Hola%2C%20quiero%20consultar%20por%20Ra%C3%ADz%20Pacar%C3%A1" target="_blank" rel="noopener">Hablar por WhatsApp</a>
-<p style="margin-top:22px">También podés encontrarnos en Instagram.</p>
-<a class="boton" href="https://www.instagram.com/raizpacara.artesanias/" target="_blank" rel="noopener">Ver Instagram</a>
-</section>
-</main>
+      <div class="header-actions">
+        <button class="cart-button" id="openCartButton" type="button" aria-label="Abrir carrito">
+          <span aria-hidden="true">♧</span> Mi carrito
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-<footer>
-<p>Raíz Pacará · Decoración artesanal</p>
-<p>Tucumán, Argentina</p>
-<p>Hecho a mano, con dedicación.</p>
-</footer>
+  <main>
+    <section class="hero" id="inicio">
+      <div>
+        <span class="eyebrow">Objetos con identidad</span>
+        <h1>El encanto de lo hecho <em>a mano.</em></h1>
+        <p class="hero-copy">
+          Piezas artesanales para darle calidez a tus espacios. Flores en tela,
+          decoración y pequeños detalles creados con tiempo, dedicación y amor.
+        </p>
+        <div class="hero-buttons">
+          <a class="button" href="#productos">Explorar productos <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#nosotras">Conocé nuestra historia</a>
+        </div>
+      </div>
 
-<script>
-const WHATSAPP="5493813538008";
+      <div class="hero-art" aria-label="Identidad visual de Raíz Pacará">
+        <div class="hero-art-text">
+          <span>Lo que nace<br>de nuestras manos</span>
+          <small>Raíz Pacará · Tucumán</small>
+        </div>
+      </div>
+    </section>
 
-const productos=[
-{id:1,n:"SET LOTO",p:25000,c:"sets",i:"✿",d:"Bandeja ovalada, florero esbelto y cuenco loto. Un refugio de serenidad para tus rincones. No incluye ramillete floral."},
-{id:2,n:"SET BOTANICO",p:25000,c:"sets",i:"❋",d:"Bandeja ovalada, florero texturizado y cuenco decorativo. Calidez atemporal para tu hogar."},
-{id:3,n:"SET PAUSA",p:23000,c:"sets",i:"◈",d:"Bandeja ovalada, florero estriado y escultura decorativa. Ideal para escritorios, bibliotecas o mesas de noche. No incluye ramo floral."},
-{id:4,n:"SET RESGUARDO",p:27000,c:"sets",i:"◇",d:"Bandeja base, florero estriado y contenedor con tapa de textura acanalada. No incluye ramillete floral."},
-{id:5,n:"SET ABRA",p:20000,c:"sets",i:"❀",d:"Bandeja base, florero estriado y cuenco con delicado relieve tejido. No incluye ramillete floral."},
-{id:6,n:"SET PENSADOR",p:23000,c:"sets",i:"◉",d:"Bandeja base, florero estriado y escultura de líneas finas. No incluye ramillete floral."},
-{id:7,n:"RAMO SILVESTRE",p:15000,c:"ramos",i:"❋",d:"Flores de tela hechas a mano en tonos neutros y salmón, follaje preservado e hilos naturales."},
-{id:8,n:"RAMO ARENA",p:15000,c:"ramos",i:"✿",d:"Flores de tela beige y arena, eucalipto preservado y delicadas espigas."},
-{id:9,n:"RAMO CARDO",p:15000,c:"ramos",i:"❀",d:"Flores de tela beige, cardo preservado magenta, eucalipto y pequeñas flores blancas."},
-{id:10,n:"RAMO TRAMA",p:15000,c:"ramos",i:"♧",d:"Flores de tela beige y arena, arpillera natural, plumitas secas y eucalipto preservado."},
-{id:11,n:"JOYERO NIDO",p:3000,c:"joyeros",i:"◇",d:"Joyero artesanal. Medidas: 17 × 9 cm."},
-{id:12,n:"JOYERO NIDO 2",p:5000,c:"joyeros",i:"◈",d:"Joyero artesanal. Medidas: 24 × 11,9 cm."},
-{id:13,n:"SET GOTA",p:23000,c:"sets",i:"◉",d:"Bandeja ovalada, florero de curvas estilizadas y figura del Pensador. No incluye ramillete floral."},
-{id:14,n:"SET VERTIENTE",p:25000,c:"sets",i:"❀",d:"Bandeja ovalada, florero de líneas curvas y cuenco con forma de flor. No incluye ramillete floral."},
-{id:15,n:"SET SOMBRA",p:23000,c:"sets",i:"◉",d:"Bandeja base ovalada, florero de curvas estilizadas y figura del Pensador. No incluye ramillete floral."},
-{id:16,n:"SET SENDA",p:25000,c:"sets",i:"◇",d:"Bandeja ovalada, florero de silueta fluida y contenedor multifunción en relieve. Puede usarse como portavela, porta sahumerios o contenedor. No incluye flores."}
-];
+    <section class="benefits" aria-label="Información de la tienda">
+      <div class="benefits-inner">
+        <div class="benefit">
+          <strong>Hecho a mano</strong>
+          Piezas con dedicación
+        </div>
+        <div class="benefit">
+          <strong>Pedidos personalizados</strong>
+          Contanos tu idea
+        </div>
+        <div class="benefit">
+          <strong>Envíos a coordinar</strong>
+          Tucumán y otras localidades
+        </div>
+      </div>
+    </section>
 
-let carrito={};
-const plata=n=>"$"+n.toLocaleString("es-AR");
+    <section class="section" id="productos">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">Nuestra tienda</span>
+          <h2>Encontrá tu próximo detalle</h2>
+          <p>Objetos pensados para acompañar tus espacios y momentos.</p>
+        </div>
+      </div>
 
-function mostrarProductos(){
- const bus=document.getElementById("buscar").value.toLowerCase().trim();
- const cat=document.getElementById("categoria").value;
- const lista=productos.filter(p=>p.n.toLowerCase().includes(bus)&&(cat==="todos"||p.c===cat));
- const cont=document.getElementById("productos");
- cont.innerHTML="";
- if(!lista.length){cont.textContent="No encontramos productos con esa búsqueda.";return}
- lista.forEach(p=>{
-  const art=document.createElement("article");art.className="producto";
-  const img=document.createElement("div");img.className="imagen";img.textContent=p.i;
-  const info=document.createElement("div");info.className="info";
-  const h=document.createElement("h3");h.textContent=p.n;
-  const d=document.createElement("p");d.className="desc";d.textContent=p.d;
-  const precio=document.createElement("p");precio.className="precio";precio.textContent=plata(p.p);
-  const estado=document.createElement("p");estado.className="estado";estado.textContent="● Disponible";
-  const btn=document.createElement("button");btn.className="agregar";btn.textContent="Agregar al carrito";
-  btn.onclick=()=>{carrito[p.id]=(carrito[p.id]||0)+1;mostrarCarrito();};
-  info.append(h,d,precio,estado,btn);art.append(img,info);cont.append(art);
- });
-}
+      <div class="filters" id="categoryFilters" aria-label="Filtrar productos">
+        <button class="filter active" data-category="todos" type="button">Todos</button>
+        <button class="filter" data-category="sets" type="button">Sets de decoración</button>
+        <button class="filter" data-category="ramos" type="button">Ramos de tela</button>
+        <button class="filter" data-category="floreros" type="button">Floreros</button>
+        <button class="filter" data-category="bandejas" type="button">Bandejas</button>
+        <button class="filter" data-category="adornos" type="button">Joyeros y adornos</button>
+        <button class="filter" data-category="espejos" type="button">Espejos</button>
+        <button class="filter" data-category="difusores" type="button">Difusores</button>
+        <button class="filter" data-category="velas" type="button">Velas</button>
+        <button class="filter" data-category="jabones" type="button">Jabones artesanales</button>
+      </div>
 
-function mostrarCarrito(){
- const items=document.getElementById("items");items.innerHTML="";
- let unidades=0,total=0;
- productos.forEach(p=>{
-  const cantidad=carrito[p.id]||0;
-  if(!cantidad)return;
-  unidades+=cantidad;total+=cantidad*p.p;
-  const fila=document.createElement("div");fila.className="linea";
-  const texto=document.createElement("div");
-  texto.textContent=p.n+" × "+cantidad+" — "+plata(p.p*cantidad);
-  const quitar=document.createElement("button");quitar.type="button";quitar.textContent="Quitar";
-  quitar.onclick=()=>{delete carrito[p.id];mostrarCarrito();};
-  fila.append(texto,quitar);items.append(fila);
- });
- if(!unidades)items.innerHTML='<p class="nota">Todavía no agregaste productos.</p>';
- document.getElementById("total").textContent=plata(total);
- document.getElementById("contador").textContent=unidades;
- document.getElementById("enviar").disabled=unidades===0;
-}
+      <div class="catalog-tools">
+        <p id="productCountText" aria-live="polite">17 productos disponibles</p>
+        <select id="sortProducts" aria-label="Ordenar productos">
+          <option value="default">Ordenar por: destacados</option>
+          <option value="price-asc">Precio: menor a mayor</option>
+          <option value="price-desc">Precio: mayor a menor</option>
+          <option value="name">Nombre: A a Z</option>
+        </select>
+      </div>
 
-document.getElementById("buscar").addEventListener("input",mostrarProductos);
-document.getElementById("categoria").addEventListener("change",mostrarProductos);
+      <div class="product-grid" id="productGrid"></div>
 
-document.getElementById("formulario").addEventListener("submit",function(e){
- e.preventDefault();
- const seleccion=productos.filter(p=>carrito[p.id]);
- if(!seleccion.length){alert("Agregá al menos un producto al carrito.");return;}
- const nombre=document.getElementById("nombre").value.trim();
- const entrega=document.getElementById("entrega").value;
- const direccion=document.getElementById("direccion").value.trim();
- const comentarios=document.getElementById("comentarios").value.trim();
- let total=0;
- let mensaje="Hola, quiero realizar un pedido en Raíz Pacará.\n\nNombre: "+nombre+"\n\n";
- seleccion.forEach(p=>{
-  const cantidad=carrito[p.id];const subtotal=p.p*cantidad;total+=subtotal;
-  mensaje+=p.n+" x "+cantidad+" = "+plata(subtotal)+"\n";
- });
- mensaje+="\nTOTAL DE PRODUCTOS: "+plata(total);
- mensaje+="\nEntrega: "+entrega;
- if(direccion)mensaje+="\nDirección/localidad: "+direccion;
- if(comentarios)mensaje+="\nComentarios: "+comentarios;
- mensaje+="\n\nQuedo a la espera de confirmar disponibilidad, envío y datos de pago.";
- window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(mensaje),"_blank");
-});
+      <div class="empty-state" id="emptyState">
+        <h3>Muy pronto, más detalles</h3>
+        <p>Estamos preparando piezas para esta categoría. Mientras tanto, podés consultarnos por WhatsApp.</p>
+        <a class="button" id="emptyWhatsApp" href="https://wa.me/5493813538008" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      </div>
 
-document.querySelectorAll("[data-copy]").forEach(btn=>{
- btn.addEventListener("click",async()=>{
-  const texto=btn.dataset.copy;
-  try{
-   await navigator.clipboard.writeText(texto);
-   btn.textContent="¡Copiado!";
-  }catch(e){
-   window.prompt("Copiá este dato:",texto);
-  }
- });
-});
+      <div class="payment-strip">
+        <div>
+          <strong>¿Encontraste algo que te gusta?</strong>
+          <p>Sumalo al carrito y prepará tu consulta. Coordinamos el pedido por WhatsApp.</p>
+        </div>
+        <button class="text-link" type="button" id="paymentInfoButton">Ver datos para transferencia</button>
+      </div>
+    </section>
 
-mostrarProductos();
-mostrarCarrito();
-</script>
+    <section class="story-section" id="nosotras">
+      <div class="story-inner">
+        <div class="story-mark">
+          <span>Raíz<br>Pacará</span>
+        </div>
+
+        <div class="story-copy">
+          <span class="eyebrow">Quiénes somos</span>
+          <h2>Todo lo que se crea tiene una raíz.</h2>
+
+          <p>Las raíces nunca son las protagonistas. Permanecen ocultas, sosteniendo la vida en silencio.</p>
+
+          <p>Así también nace el arte hecho a mano.</p>
+
+          <p>Detrás de cada pieza hay tiempo, paciencia, dedicación y amor. Un proceso que muchas veces nadie ve, pero que hace posible que algo único llegue a las manos de otra persona.</p>
+
+          <p>Raíz Pacará nace del encuentro de dos mujeres que se conocieron a través de los cursos de artesanías. De a poco, ese interés se convirtió en un espacio para imaginar, probar materiales y darle vida a nuevas ideas.</p>
+
+          <p>Hoy queremos compartir con ustedes un poquito de lo que hacemos, pieza por pieza, con nuestras manos y a nuestra manera.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="personalized-section" id="personalizados">
+      <div class="personalized-inner">
+        <span class="eyebrow">Hecho para vos</span>
+        <h2>Detalles para momentos especiales.</h2>
+
+        <p class="personalized-copy">
+          Creamos piezas artesanales para acompañar momentos únicos: comuniones,
+          bautismos, cumpleaños y otras celebraciones.
+          Contanos qué tenés en mente y consultanos las posibilidades.
+          Vamos a conversar sobre tu idea, los diseños disponibles, los tiempos y el presupuesto.
+        </p>
+
+        <div class="occasion-list" aria-label="Tipos de eventos">
+          <span class="occasion">Comuniones</span>
+          <span class="occasion">Bautismos</span>
+          <span class="occasion">Cumpleaños</span>
+          <span class="occasion">Eventos especiales</span>
+        </div>
+
+        <a class="button" id="personalizedWhatsApp" href="https://wa.me/5493813538008?text=Hola%2C%20Ra%C3%ADz%20Pacar%C3%A1.%20Quisiera%20consultar%20por%20un%20pedido%20personalizado." target="_blank" rel="noopener">
+          Consultar por WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contacto">
+      <span class="eyebrow">Conectemos</span>
+      <h2>Estamos para ayudarte.</h2>
+      <p>
+        ¿Tenés alguna consulta sobre nuestros productos o querés hacer un pedido?
+        Escribinos o conocé más de nuestro trabajo en redes.
+      </p>
+
+      <div class="contact-buttons">
+        <a class="button" id="contactWhatsApp" href="https://wa.me/5493813538008" target="_blank" rel="noopener">Hablar por WhatsApp ↗</a>
+        <a class="button secondary" href="https://www.instagram.com/raizpacara.artesanias/" target="_blank" rel="noopener">Ver Instagram ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">Raíz Pacará</div>
+        <small>Decoración artesanal & flores en tela · Tucumán, Argentina</small>
+      </div>
+
+      <div class="footer-links">
+        <a href="#productos">Productos</a>
+        <a href="#personalizados">Personalizados</a>
+        <a href="#nosotras">Nuestra historia</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+
+      <small>Hecho a mano, pieza por pieza.</small>
+    </div>
+  </footer>
+
+  <div class="overlay" id="cartOverlay"></div>
+
+  <aside class="cart-panel" id="cartPanel" role="dialog" aria-modal="true" aria-labelledby="cartTitle" aria-hidden="true">
+    <div class="cart-header">
+      <h2 id="cartTitle">Tu carrito</h2>
+      <button class="icon-button" type="button" id="closeCartButton" aria-label="Cerrar carrito">×</button>
+    </div>
+
+    <div id="cartContents"></div>
+
+    <div class="payment-details" id="paymentDetails">
+      <h3>Datos para transferencia</h3>
+
+      <p><strong>Alias:</strong> <span id="paymentAlias">iris.0509</span></p>
+      <button class="copy-button" type="button" data-copy="iris.0509">Copiar alias</button>
+
+      <p><strong>CBU:</strong> <span id="paymentCbu">4530000800015796491774</span></p>
+      <button class="copy-button" type="button" data-copy="4530000800015796491774">Copiar CBU</button>
+
+      <p class="payment-warning">
+        Antes de transferir, verificá los datos de pago directamente con Raíz Pacará
+        por WhatsApp. El pedido y el envío quedan sujetos a confirmación.
+      </p>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    "use strict";
+
+    const WHATSAPP = "5493813538008";
+    const INSTAGRAM = "https://www.instagram.com/raizpacara.artesanias/";
+    const PROMOTION_THRESHOLD = 70000;
+    const DISCOUNT_RATE = 0.10;
+
+    const categoryNames = {
+      todos: "Todos",
+      ramos: "Ramos de flores en tela",
+      sets: "Sets de decoración",
+      floreros: "Floreros",
+      bandejas: "Bandejas",
+      adornos: "Joyeros, adornos y otros",
+      espejos: "Espejos",
+      difusores: "Difusores",
+      velas: "Velas",
+      jabones: "Jabones artesanales"
+    };
+
+    const products = [
+      {
+        id: "set-pensador",
+        name: "SET PENSADOR",
+        price: 23000,
+        category: "sets",
+        image: "set-pensador.jpg",
+        description: "Bandeja base, florero estriado y escultura de líneas finas. No incluye ramillete floral."
+      },
+      {
+        id: "ramo-silvestre",
+        name: "RAMO SILVESTRE",
+        price: 15000,
+        category: "ramos",
+        image: "ramo-silvestre.jpg",
+        description: "Flores de tela hechas a mano en tonos neutros y salmón, follaje preservado e hilos naturales."
+      },
+      {
+        id: "ramo-arena",
+        name: "RAMO ARENA",
+        price: 15000,
+        category: "ramos",
+        image: "ramo-arena.jpg",
+        description: "Flores de tela beige y arena, eucalipto preservado y delicadas espigas."
+      },
+      {
+        id: "ramo-cardo",
+        name: "RAMO CARDO",
+        price: 15000,
+        category: "ramos",
+        image: "ramo-cardo.jpg",
+        description: "Flores de tela beige, cardo preservado magenta, eucalipto y pequeñas flores blancas."
+      },
+      {
+        id: "ramo-trama",
+        name: "RAMO TRAMA",
+        price: 15000,
+        category: "ramos",
+        image: "ramo-trama.jpg",
+        description: "Flores de tela beige y arena, arpillera natural, plumitas secas y eucalipto preservado."
+      },
+      {
+        id: "joyero-nido",
+        name: "JOYERO NIDO",
+        price: 3000,
+        category: "adornos",
+        image: "joyero-nido.jpg",
+        description: "Joyero artesanal. Medidas: 17 × 9 cm."
+      },
+      {
+        id: "set-gota",
+        name: "SET GOTA",
+        price: 23000,
+        category: "sets",
+        image: "set-gota.jpg",
+        description: "Bandeja ovalada, florero de curvas estilizadas y figura del Pensador. No incluye ramillete floral."
+      },
+      {
+        id: "set-vertiente",
+        name: "SET VERTIENTE",
+        price: 25000,
+        category: "sets",
+        image: "set-vertiente.jpg",
+        description: "Bandeja ovalada, florero de líneas curvas y cuenco con forma de flor. No incluye ramillete floral."
+      },
+      {
+        id: "set-sombra",
+        name: "SET SOMBRA",
+        price: 23000,
+        category: "sets",
+        image: "set-sombra.jpg",
+        description: "Bandeja base ovalada, florero de curvas estilizadas y figura del Pensador. No incluye ramillete floral."
+      },
+      {
+        id: "set-senda",
+        name: "SET SENDA",
+        price: 25000,
+        category: "sets",
+        image: "set-senda.jpg",
+        description: "Bandeja de líneas curvas estilizadas y cuenco facetado decorativo. No incluye ramillete floral."
+      },
+      {
+        id: "set-bruma",
+        name: "SET BRUMA",
+        price: 25000,
+        category: "sets",
+        image: "set-bruma.jpg",
+        description: "Bandeja base ovalada, florero estriado cilíndrico y contenedor acanalado con tapa. No incluye flores ni arreglos."
+      },
+      {
+        id: "set-latido",
+        name: "SET LATIDO",
+        price: 23000,
+        category: "sets",
+        image: "set-latido.jpg",
+        description: "Bandeja base ovalada, florero estriado cilíndrico y figura decorativa en contemplación. No incluye flores ni arreglos."
+      },
+      {
+        id: "set-silencio",
+        name: "SET SILENCIO",
+        price: 23000,
+        category: "sets",
+        image: "set-silencio.jpg",
+        description: "Bandeja base ovalada, florero estriado cilíndrico y escultura calada decorativa. No incluye flores ni arreglos."
+      },
+      {
+        id: "set-brote",
+        name: "SET BROTE",
+        price: 25000,
+        category: "sets",
+        image: "set-brote.jpg",
+        description: "Bandeja base ovalada, florero estriado cilíndrico y cuenco orgánico en forma de pétalos. No incluye flores ni arreglos."
+      },
+      {
+        id: "set-calma",
+        name: "SET CALMA",
+        price: 10000,
+        category: "sets",
+        image: "set-calma.jpg",
+        description: "Bandeja base ovalada y florero de silueta lisa y atemporal. No incluye flores ni arreglos."
+      },
+      {
+        id: "set-espiga",
+        name: "SET ESPIGA",
+        price: 15000,
+        category: "sets",
+        image: "set-espiga.jpg",
+        description: "Bandeja base ovalada, florero de silueta lisa y cuenco con delicado relieve tejido. No incluye flores ni arreglos."
+      },
+      {
+        id: "set-aquiescencia",
+        name: "SET AQUIESCENCIA",
+        price: 15000,
+        category: "sets",
+        image: "set-aquiescencia.jpg",
+        description: "Bandeja base ovalada, florero de línea lisa y escultura decorativa de postura contemplativa. No incluye flores ni arreglos."
+      }
+    ];
+
+    let selectedCategory = "todos";
+    let cart = {};
+
+    const productGrid = document.getElementById("productGrid");
+    const emptyState = document.getElementById("emptyState");
+    const productCountText = document.getElementById("productCountText");
+    const cartPanel = document.getElementById("cartPanel");
+    const cartOverlay = document.getElementById("cartOverlay");
+    const cartContents = document.getElementById("cartContents");
+    const cartCount = document.getElementById("cartCount");
+    const mainNav = document.getElementById("mainNav");
+    const productsMenu = document.getElementById("productsMenu");
+    const toast = document.getElementById("toast");
+
+    const formatMoney = amount =>
+      new Intl.NumberFormat("es-AR", {
+        style: "currency",
+        currency: "ARS",
+        maximumFractionDigits: 0
+      }).format(amount);
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    function getVisibleProducts() {
+      let result = products.filter(product =>
+        selectedCategory === "todos" || product.category === selectedCategory
+      );
+
+      const sort = document.getElementById("sortProducts").value;
+
+      if (sort === "price-asc") {
+        result.sort((a, b) => a.price - b.price);
+      } else if (sort === "price-desc") {
+        result.sort((a, b) => b.price - a.price);
+      } else if (sort === "name") {
+        result.sort((a, b) => a.name.localeCompare(b.name, "es"));
+      }
+
+      return result;
+    }
+
+    function renderProducts() {
+      const visibleProducts = getVisibleProducts();
+
+      productGrid.innerHTML = visibleProducts.map(product => `
+        <article class="product-card">
+          <div class="product-image">
+            <span class="product-category">${categoryNames[product.category]}</span>
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              loading="lazy"
+              onerror="this.style.display='none';this.parentElement.classList.add('sin-imagen')"
+            >
+            <div class="image-fallback" aria-hidden="true">Raíz<br>Pacará</div>
+          </div>
+
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <p class="product-description">${product.description}</p>
+            <div class="product-price">${formatMoney(product.price)}</div>
+            <button class="product-add" type="button" data-add="${product.id}">
+              Agregar al carrito +
+            </button>
+          </div>
+        </article>
+      `).join("");
+
+      productCountText.textContent = visibleProducts.length === 1
+        ? "1 producto disponible"
+        : `${visibleProducts.length} productos disponibles`;
+
+      const isEmpty = visibleProducts.length === 0;
+      productGrid.style.display = isEmpty ? "none" : "grid";
+      emptyState.style.display = isEmpty ? "block" : "none";
+
+      if (isEmpty) {
+        const category = categoryNames[selectedCategory] || "esta categoría";
+        emptyState.querySelector("h3").textContent = `${category}: muy pronto`;
+        emptyState.querySelector("p").textContent =
+          "Estamos preparando piezas para esta categoría. Escribinos y consultanos por disponibilidad o pedidos personalizados.";
+
+        document.getElementById("emptyWhatsApp").href =
+          `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
+            "Hola, Raíz Pacará. Quisiera consultar por productos de la categoría: " + category + "."
+          )}`;
+      }
+    }
+
+    function setCategory(category) {
+      selectedCategory = categoryNames[category] ? category : "todos";
+
+      document.querySelectorAll("#categoryFilters .filter").forEach(button => {
+        button.classList.toggle("active", button.dataset.category === selectedCategory);
+      });
+
+      renderProducts();
+
+      productsMenu.open = false;
+      mainNav.classList.remove("mobile-open");
+      document.getElementById("mobileMenuButton").setAttribute("aria-expanded", "false");
+
+      document.getElementById("productos").scrollIntoView({ behavior: "smooth" });
+    }
+
+    function getCartEntries() {
+      return Object.entries(cart)
+        .map(([id, quantity]) => ({
+          product: products.find(product => product.id === id),
+          quantity
+        }))
+        .filter(entry => entry.product && entry.quantity > 0);
+    }
+
+    function getCartTotals() {
+      const subtotal = getCartEntries().reduce(
+        (sum, entry) => sum + entry.product.price * entry.quantity,
+        0
+      );
+
+      const qualifiesForPromotion = subtotal > PROMOTION_THRESHOLD;
+      const discount = qualifiesForPromotion ? Math.round(subtotal * DISCOUNT_RATE) : 0;
+
+      return {
+        subtotal,
+        discount,
+        total: subtotal - discount,
+        qualifiesForPromotion
+      };
+    }
+
+    function addToCart(id) {
+      const product = products.find(item => item.id === id);
+      if (!product) return;
+
+      cart[id] = (cart[id] || 0) + 1;
+      renderCart();
+      showToast(`${product.name}: agregado al carrito`);
+    }
+
+    function changeQuantity(id, amount) {
+      if (!cart[id]) return;
+
+      cart[id] += amount;
+
+      if (cart[id] <= 0) delete cart[id];
+
+      renderCart();
+    }
+
+    function removeFromCart(id) {
+      delete cart[id];
+      renderCart();
+      showToast("Producto eliminado del carrito");
+    }
+
+    function renderCart() {
+      const entries = getCartEntries();
+      const itemCount = entries.reduce((sum, entry) => sum + entry.quantity, 0);
+      const totals = getCartTotals();
+
+      cartCount.textContent = itemCount;
+      cartCount.setAttribute("aria-label", `${itemCount} productos en el carrito`);
+
+      if (!entries.length) {
+        cartContents.innerHTML = `
+          <div class="cart-empty">
+            <h3>Tu carrito está esperando</h3>
+            <p>Cuando encuentres algo que te guste, agregalo acá.</p>
+            <button class="button" type="button" id="continueShopping">Ver productos</button>
+          </div>
+        `;
+        return;
+      }
+
+      const itemMarkup = entries.map(({ product, quantity }) => `
+        <div class="cart-item">
+          <div>
+            <h3>${product.name}</h3>
+            <p>${formatMoney(product.price)} por unidad</p>
+            <div class="cart-item-total">${formatMoney(product.price * quantity)}</div>
+            <div class="quantity-control">
+              <button type="button" data-decrease="${product.id}" aria-label="Restar uno">−</button>
+              <span>${quantity}</span>
+              <button type="button" data-increase="${product.id}" aria-label="Sumar uno">+</button>
+              <button type="button" class="remove-item" data-remove="${product.id}">Quitar</button>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      let promotionMessage = "";
+
+      if (totals.qualifiesForPromotion) {
+        promotionMessage = `
+          <div class="promotion-note">
+            ¡Tu compra supera los ${formatMoney(PROMOTION_THRESHOLD)}!
+            Tenés un 10% de descuento en productos.
+            El envío a domicilio es gratis únicamente dentro de San Miguel de Tucumán.
+          </div>
+        `;
+      } else {
+        const remaining = PROMOTION_THRESHOLD + 1 - totals.subtotal;
+        promotionMessage = `
+          <div class="promotion-note">
+            Superando los ${formatMoney(PROMOTION_THRESHOLD)} en productos,
+            obtenés un 10% de descuento. ${remaining > 0 ? `Te faltan ${formatMoney(remaining)} para superar el monto mínimo.` : ""}
+            El envío se coordina por separado.
+          </div>
+        `;
+      }
+
+      cartContents.innerHTML = `
+        <div class="cart-items">${itemMarkup}</div>
+
+        <div class="cart-summary">
+          <div class="summary-line">
+            <span>Subtotal de productos</span>
+            <strong>${formatMoney(totals.subtotal)}</strong>
+          </div>
+          <div class="summary-line discount">
+            <span>Descuento${totals.qualifiesForPromotion ? " (10%)" : ""}</span>
+            <strong>${totals.discount ? "− " + formatMoney(totals.discount) : formatMoney(0)}</strong>
+          </div>
+          <div class="summary-line total">
+            <span>Total de productos</span>
+            <strong>${formatMoney(totals.total)}</strong>
+          </div>
+          ${promotionMessage}
+          <p class="field-help">El costo del envío no está incluido en este total y se coordina según la localidad.</p>
+        </div>
+
+        <form class="checkout-form" id="checkoutForm">
+          <div class="field">
+            <label for="customerName">Tu nombre *</label>
+            <input id="customerName" name="customerName" autocomplete="name" required placeholder="¿Cómo te llamás?">
+          </div>
+
+          <div class="field">
+            <label for="deliveryType">¿Cómo querés recibir tu pedido? *</label>
+            <select id="deliveryType" name="deliveryType" required>
+              <option value="">Seleccioná una opción</option>
+              <option value="Domicilio">Envío a domicilio</option>
+              <option value="Coordinar">Coordinar entrega o retiro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="locality">Localidad *</label>
+            <input id="locality" name="locality" required placeholder="Ej.: San Miguel de Tucumán">
+            <p class="field-help">El envío gratis se aplica solo a entregas a domicilio dentro de San Miguel de Tucumán cuando la compra supera los $70.000.</p>
+          </div>
+
+          <div class="field" id="addressField" hidden>
+            <label for="customerAddress">Dirección de entrega</label>
+            <input id="customerAddress" name="customerAddress" autocomplete="street-address" placeholder="Calle, número y referencias">
+          </div>
+
+          <div class="field">
+            <label for="orderComments">Comentarios (opcional)</label>
+            <textarea id="orderComments" name="orderComments" placeholder="Detalles del pedido o del envío"></textarea>
+          </div>
+
+          <button class="button" type="submit">Continuar por WhatsApp ↗</button>
+          <p class="field-help">El pedido se enviará como consulta por WhatsApp. La disponibilidad, el pago y la entrega se confirman con Raíz Pacará.</p>
+        </form>
+      `;
+
+      const deliverySelect = document.getElementById("deliveryType");
+      const addressField = document.getElementById("addressField");
+      const addressInput = document.getElementById("customerAddress");
+
+      deliverySelect.addEventListener("change", () => {
+        const showAddress = deliverySelect.value === "Domicilio";
+        addressField.hidden = !showAddress;
+        addressInput.required = showAddress;
+      });
+
+      document.getElementById("checkoutForm").addEventListener("submit", handleCheckout);
+    }
+
+    function normalizeText(value) {
+      return value
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim()
+        .toLowerCase();
+    }
+
+    function handleCheckout(event) {
+      event.preventDefault();
+
+      const entries = getCartEntries();
+      if (!entries.length) {
+        showToast("Agregá al menos un producto al carrito.");
+        return;
+      }
+
+      const form = event.currentTarget;
+      if (!form.reportValidity()) return;
+
+      const name = document.getElementById("customerName").value.trim();
+      const delivery = document.getElementById("deliveryType").value;
+      const locality = document.getElementById("locality").value.trim();
+      const address = document.getElementById("customerAddress").value.trim();
+      const comments = document.getElementById("orderComments").value.trim();
+
+      const totals = getCartTotals();
+      const normalizedLocality = normalizeText(locality);
+      const isSanMiguel = normalizedLocality.startsWith("san miguel de tucuman");
+      const freeShipping = totals.qualifiesForPromotion && delivery === "Domicilio" && isSanMiguel;
+
+      const lines = entries.map(({ product, quantity }) =>
+        `• ${product.name} x${quantity} — ${formatMoney(product.price * quantity)}`
+      );
+
+      const message = [
+        "¡Hola, Raíz Pacará! Quiero consultar por este pedido:",
+        "",
+        ...lines,
+        "",
+        `Subtotal de productos: ${formatMoney(totals.subtotal)}`,
+        `Descuento: ${totals.discount ? formatMoney(totals.discount) : formatMoney(0)}`,
+        `Total de productos con descuento: ${formatMoney(totals.total)}`,
+        "",
+        `Nombre: ${name}`,
+        `Entrega: ${delivery === "Domicilio" ? "A domicilio" : "A coordinar"}`,
+        `Localidad: ${locality}`,
+        ...(delivery === "Domicilio" ? [`Dirección: ${address}`] : []),
+        `Envío: ${freeShipping ? "Gratis (compra superior a $70.000, domicilio dentro de San Miguel de Tucumán)" : "A coordinar según la localidad"}`,
+        ...(comments ? [`Comentarios: ${comments}`] : []),
+        "",
+        "Quedo pendiente de la confirmación de disponibilidad, pago y entrega. ¡Gracias!"
+      ].join("\n");
+
+      const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function openCart() {
+      cartPanel.classList.add("open");
+      cartOverlay.classList.add("open");
+      cartPanel.setAttribute("aria-hidden", "false");
+      document.body.classList.add("no-scroll");
+      document.getElementById("closeCartButton").focus();
+    }
+
+    function closeCart() {
+      cartPanel.classList.remove("open");
+      cartOverlay.classList.remove("open");
+      cartPanel.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("no-scroll");
+    }
+
+    async function copyText(value) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(value);
+          showToast("Copiado al portapapeles");
+        } else {
+          window.prompt("Copiá este dato:", value);
+        }
+      } catch (error) {
+        window.prompt("Copiá este dato:", value);
+      }
+    }
+
+    document.getElementById("categoryFilters").addEventListener("click", event => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+      setCategory(button.dataset.category);
+    });
+
+    document.querySelector(".dropdown").addEventListener("click", event => {
+      const button = event.target.closest("[data-category]");
+      if (!button) return;
+      setCategory(button.dataset.category);
+    });
+
+    productGrid.addEventListener("click", event => {
+      const button = event.target.closest("[data-add]");
+      if (!button) return;
+      addToCart(button.dataset.add);
+    });
+
+    cartContents.addEventListener("click", event => {
+      const increase = event.target.closest("[data-increase]");
+      const decrease = event.target.closest("[data-decrease]");
+      const remove = event.target.closest("[data-remove]");
+
+      if (increase) changeQuantity(increase.dataset.increase, 1);
+      if (decrease) changeQuantity(decrease.dataset.decrease, -1);
+      if (remove) removeFromCart(remove.dataset.remove);
+
+      if (event.target.closest("#continueShopping")) {
+        closeCart();
+        document.getElementById("productos").scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    document.getElementById("sortProducts").addEventListener("change", renderProducts);
+
+    document.getElementById("openCartButton").addEventListener("click", () => {
+      renderCart();
+      openCart();
+    });
+
+    document.getElementById("closeCartButton").addEventListener("click", closeCart);
+    cartOverlay.addEventListener("click", closeCart);
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closeCart();
+        productsMenu.open = false;
+        mainNav.classList.remove("mobile-open");
+        document.getElementById("mobileMenuButton").setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.getElementById("mobileMenuButton").addEventListener("click", () => {
+      const isOpen = mainNav.classList.toggle("mobile-open");
+      document.getElementById("mobileMenuButton").setAttribute("aria-expanded", String(isOpen));
+      document.getElementById("mobileMenuButton").textContent = isOpen ? "×" : "☰";
+    });
+
+    document.querySelectorAll("#mainNav > a").forEach(link => {
+      link.addEventListener("click", () => {
+        mainNav.classList.remove("mobile-open");
+        document.getElementById("mobileMenuButton").setAttribute("aria-expanded", "false");
+        document.getElementById("mobileMenuButton").textContent = "☰";
+      });
+    });
+
+    document.querySelectorAll("[data-copy]").forEach(button => {
+      button.addEventListener("click", () => copyText(button.dataset.copy));
+    });
+
+    document.getElementById("paymentInfoButton").addEventListener("click", () => {
+      renderCart();
+      openCart();
+      document.getElementById("paymentDetails").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    renderProducts();
+    renderCart();
+  </script>
 </body>
 </html>
+
+Me encanta la estética, quedo 10 puntos pero por ej en explorar productos te debería mandar a un lugar donde haya para ver los productos, en conoce nuestra historia a quien somos, porque son tentativos para apretar pero lo aprietas y no dice nada. 
+Después las bandejas y joyeros (son las mismas cosas pero le das otra utilidad) 
+Después no entiendo porqué no están las imágenes, yo como no te las puedo mandar a vos porque me quedé sin puede mandar fotos y archivos por pobre jajaja le tuve que mandar a otra ia para que me lo haga pero bueno parece que no se cargó, no sé … :( pero real quedé enamorada de la estética, las palabras está quedando cada vez más perfecto 
+Set Bruma 
+ Precio: $25.000
+ Descripción: Bandeja base ovalada, florero estriado cilíndrico y contenedor acanalado con tapa. No incluye flores ni arreglos.
+
+Set Latido 
+ Precio: $23.000
+ Descripción: Bandeja base ovalada, florero estriado cilíndrico y figura decorativa en contemplación. No incluye flores ni arreglos.
+
+Set Silencio
+ Precio: $23.000
+ Descripción: Bandeja base ovalada, florero estriado cilíndrico y escultura calada decorativa. No incluye flores ni arreglos.
+
+Set Brote 
+ Precio: $25.000
+ Descripción: Bandeja base ovalada, florero estriado cilíndrico y cuenco orgánico en forma de pétalos. No incluye flores ni arreglos.
+
+Set Calma 
+ Precio: $10.000
+ Descripción: Bandeja base ovalada y florero/frasco de silueta lisa y atemporal. No incluye flores ni arreglos.
+
+Set NUDO 
+ Precio: $15.000
+ Descripción: Bandeja base ovalada, florero de silueta lisa y cuenco con delicado relieve tejido. No incluye flores ni arreglos.
+
+Set tregua
+ Precio: $15.000
+ Descripción: Bandeja base ovalada, florero de línea lisa y escultura decorativa de postura contemplativa. No incluye flores ni arreglos.
+Producto Precio
+Set Bruma $25.000
+Set Latido $23.000
+Set Silencio $23.000
+Set Brote $25.000
+Set Calma $10.000
+Set Nudo $15.000
+Set Tregua $15.000
+Actualizo el código completo con los nombres y precios nuevos de los sets Nudo y Tregua.
+Corregimos los botones «Explorar productos» y «Conocé nuestra historia» para que lleven a la sección correspondiente.
+Unificamos las categorías para que las bandejas, los joyeros y las piezas decorativas no queden divididos innecesariamente.
+Revisamos las fotos para que cada producto muestre la imagen correcta.
+Conservamos el carrito, los pedidos por WhatsApp, los descuentos y los datos de pago que ya habíamos definido.
+Ahhh, ahora entendí! JAJAJA 💚😂 Esas fotos son de los productos que ya estaban cargados en la web, así que no tenemos que volver a agregarlos.
+Entonces, las nuevas fotos que me pasaste son para incorporar los sets Bruma, Latido, Silencio, Brote, Calma, Nudo y Tregua, y tenemos que conservar los productos anteriores.
+Para hacerlo bien, nos falta una cosa: pasame las fotos de esos siete sets nuevos. Si todavía no las tenés todas, mandame las que tengas y las vamos organizando.
+Después te preparo el código completo actualizado, manteniendo los productos anteriores, sus fotos y el diseño que ya te gustó. No vamos a borrar nada ni duplicar productos. �
