@@ -1,83 +1,407 @@
-Decoración artesanal con identidad propia ✳ Tucumán, Argentina
-rpRAÍZ PACARÁOBJETOS CON HISTORIA  ☰
-InicioColecciónNuestra esenciaContacto
-Mi selección 0
-✳   DECORACIÓN ARTESANAL
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#778977">
+  <meta name="description" content="Raíz Pacará. Decoración artesanal hecha con dedicación en Tucumán, Argentina.">
+  <title>Raíz Pacará | Decoración artesanal</title>
 
-Objetos con raíz.
-Piezas con historia.
+  <style>
+    :root {
+      --verde: #778977;
+      --arena: #EFECE6;
+      --beige: #F5F2EC;
+      --marron: #A88B73;
+      --texto: #373B33;
+      --blanco: #FFFFFF;
+    }
 
-Creaciones hechas a mano para darle calidez, identidad y personalidad a tus espacios.
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-Explorar la colección ↗Conocé nuestra esencia
-✳   Cada pieza tiene su propio carácter.
-Hecha a mano, pensada para tu hogar.
+    html {
+      scroll-behavior: smooth;
+    }
 
-✳Tu próxima foto protagonistaReemplazá este espacio por una fotografía de tus creaciones.
-HECHO
-CON
-INTENCIÓN
-✳
-Piezas únicas · Hechas a mano
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--texto);
+      background: var(--beige);
+      line-height: 1.7;
+    }
 
-Flores de tela ↗Puntillismo ↗Mosaiquismo ↗Espejos ↗Decoración ↗
-LA COLECCIÓN
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-Encontrá esa pieza especial.
+    .aviso {
+      background: var(--verde);
+      color: white;
+      text-align: center;
+      padding: 9px 12px;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
 
-Objetos artesanales que suman textura, color y personalidad a cada rincón.
+    header {
+      text-align: center;
+      padding: 30px 18px 24px;
+      background: var(--beige);
+    }
 
-⌕
-Nuestra selecciónHECHO A MANO, PIEZA POR PIEZA
-✳   ¿Buscás una pieza personalizada? Hablemos por WhatsApp.
+    .marca {
+      font-size: clamp(30px, 7vw, 48px);
+      font-weight: normal;
+      letter-spacing: 2px;
+      color: var(--verde);
+      line-height: 1.2;
+    }
 
-✳El proceso artesanalAgregá una foto de materiales, manos trabajando o detalles.El valor de lo hecho a mano
-NUESTRA ESENCIA
+    .submarca {
+      margin-top: 7px;
+      font-family: Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--marron);
+    }
 
-La belleza está en los detalles.
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 22px;
+      padding: 14px 10px;
+      border-top: 1px solid #ded9cf;
+      border-bottom: 1px solid #ded9cf;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
 
-Raíz Pacará nace del amor por crear objetos con identidad. Cada pieza se trabaja a mano, cuidando sus texturas, sus formas y esos pequeños detalles que la vuelven especial.
+    nav a:hover {
+      color: var(--verde);
+    }
 
-Creemos que un hogar se construye con cosas que nos representan: piezas elegidas con intención, hechas para acompañar historias y transformar espacios cotidianos.
+    .portada {
+      background: var(--arena);
+      text-align: center;
+      padding: 75px 22px;
+    }
 
-Descubrí nuestras piezas ↗
-✳
-Hecho a mano
+    .etiqueta {
+      font-family: Arial, sans-serif;
+      color: var(--marron);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 10px;
+      margin-bottom: 18px;
+    }
 
-Cada creación lleva tiempo, dedicación y cuidado.
+    h1 {
+      font-size: clamp(34px, 8vw, 58px);
+      font-weight: normal;
+      line-height: 1.2;
+      max-width: 720px;
+      margin: 0 auto 22px;
+    }
 
-⌂
-Con identidad
+    .portada p {
+      max-width: 480px;
+      margin: 0 auto 28px;
+      font-size: 16px;
+    }
 
-Objetos que suman personalidad a tus espacios.
+    .boton {
+      display: inline-block;
+      background: var(--verde);
+      color: white;
+      padding: 13px 24px;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1px solid var(--verde);
+      transition: 0.2s;
+    }
 
-♡
-Hecho con cuidado
+    .boton:hover {
+      background: #5e705e;
+    }
 
-Detalles únicos que hacen especial cada pieza.
+    section {
+      padding: 62px 20px;
+      scroll-margin-top: 20px;
+    }
 
-SIGAMOS EN CONTACTO
+    .encabezado {
+      text-align: center;
+      max-width: 620px;
+      margin: 0 auto 35px;
+    }
 
-Tu próximo rincón favorito
-puede empezar acá.
+    .encabezado h2 {
+      font-size: clamp(28px, 6vw, 38px);
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
 
-Consultar por WhatsApp ↗Seguinos en Instagram ↗
-✳
-rpRAÍZ PACARÁOBJETOS CON HISTORIA
-Decoración artesanal · Tucumán, Argentina
+    .encabezado p {
+      font-size: 14px;
+    }
 
-InstagramWhatsAppOtra línea de consultas
-© Raíz Pacará. Hecho con dedicación.
-◔   ¿Hablamos?
-RAÍZ PACARÁ
+    .coleccion {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      max-width: 900px;
+      margin: auto;
+    }
 
-Tu selección
+    .producto {
+      background: white;
+      padding-bottom: 20px;
+      text-align: center;
+    }
 
-×
-Subtotal estimadoA consultar
-Los precios y la disponibilidad se confirman al coordinar el pedido. El envío se calcula según tu ubicación.
+    .producto-imagen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      aspect-ratio: 4 / 4.5;
+      background: var(--arena);
+      color: var(--verde);
+      font-size: 42px;
+    }
 
-Preparar pedido por WhatsApp ↗Vaciar selección
-×‹
+    .producto h3 {
+      font-size: 17px;
+      font-weight: normal;
+      margin: 17px 8px 5px;
+    }
 
-›
+    .producto p {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      color: #77766f;
+      padding: 0 10px;
+    }
+
+    .producto a {
+      display: inline-block;
+      margin-top: 13px;
+      border-bottom: 1px solid var(--verde);
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    .historia {
+      background: var(--arena);
+      text-align: center;
+    }
+
+    .historia-contenido {
+      max-width: 640px;
+      margin: auto;
+    }
+
+    .historia h2 {
+      font-size: clamp(28px, 6vw, 40px);
+      font-weight: normal;
+      margin-bottom: 20px;
+    }
+
+    .historia p {
+      font-size: 15px;
+      margin-bottom: 14px;
+    }
+
+    .contacto {
+      text-align: center;
+    }
+
+    .contacto h2 {
+      font-size: clamp(28px, 6vw, 40px);
+      font-weight: normal;
+      margin-bottom: 15px;
+    }
+
+    .contacto p {
+      margin: 0 auto 25px;
+      max-width: 500px;
+    }
+
+    footer {
+      background: var(--verde);
+      color: white;
+      padding: 28px 18px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    footer p + p {
+      margin-top: 7px;
+    }
+
+    @media (min-width: 700px) {
+      .portada {
+        padding: 110px 25px;
+      }
+
+      .coleccion {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      section {
+        padding: 85px 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="aviso">
+    HECHO A MANO · CON AMOR DESDE TUCUMÁN, ARGENTINA
+  </div>
+
+  <header>
+    <a href="#inicio">
+      <div class="marca">Raíz Pacará</div>
+      <div class="submarca">Decoración artesanal</div>
+    </a>
+  </header>
+
+  <nav>
+    <a href="#inicio">INICIO</a>
+    <a href="#coleccion">COLECCIÓN</a>
+    <a href="#nosotras">NUESTRA ESENCIA</a>
+    <a href="#contacto">CONTACTO</a>
+  </nav>
+
+  <main>
+    <section class="portada" id="inicio">
+      <div class="etiqueta">Objetos con identidad</div>
+      <h1>El encanto de lo hecho a mano.</h1>
+      <p>
+        Piezas artesanales para transformar tus espacios
+        y hacer de cada rincón un lugar especial.
+      </p>
+      <a class="boton" href="#coleccion">Descubrir la colección</a>
+    </section>
+
+    <section id="coleccion">
+      <div class="encabezado">
+        <div class="etiqueta">Nuestra selección</div>
+        <h2>Pequeñas piezas, grandes detalles.</h2>
+        <p>
+          Creaciones artesanales realizadas con dedicación,
+          inspiradas en la belleza de los materiales y los detalles.
+        </p>
+      </div>
+
+      <div class="coleccion">
+        <article class="producto">
+          <div class="producto-imagen">✿</div>
+          <h3>Flores en tela</h3>
+          <p>Ramos artesanales que perduran.</p>
+          <a href="#contacto">CONSULTAR</a>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">◈</div>
+          <h3>Cuadros artesanales</h3>
+          <p>Arte en puntillismo y mosaiquismo.</p>
+          <a href="#contacto">CONSULTAR</a>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">◯</div>
+          <h3>Espejos decorativos</h3>
+          <p>Detalles que realzan tus espacios.</p>
+          <a href="#contacto">CONSULTAR</a>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">♧</div>
+          <h3>Lámparas</h3>
+          <p>Luz y calidez para tu hogar.</p>
+          <a href="#contacto">CONSULTAR</a>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">❋</div>
+          <h3>Floreros de yeso</h3>
+          <p>Formas artesanales para decorar.</p>
+          <a href="#contacto">CONSULTAR</a>
+        </article>
+
+        <article class="producto">
+          <div class="producto-imagen">♡</div>
+          <h3>Creaciones especiales</h3>
+          <p>Consultanos por pedidos personalizados.</p>
+          <a href="#contacto">CONSULTAR</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="historia" id="nosotras">
+      <div class="historia-contenido">
+        <div class="etiqueta">La esencia de nuestra marca</div>
+        <h2>Una raíz que inspira. Una pieza que cuenta.</h2>
+        <p>
+          Raíz Pacará nace del amor por crear con las manos,
+          de encontrar belleza en los detalles y de darle
+          vida a objetos únicos.
+        </p>
+        <p>
+          Cada pieza lleva tiempo, dedicación y una historia.
+          Queremos que encuentres en ellas algo que conecte
+          con tu forma de habitar y sentir tu hogar.
+        </p>
+      </div>
+    </section>
+
+    <section class="contacto" id="contacto">
+      <div class="etiqueta">Estamos para ayudarte</div>
+      <h2>¿Buscás una pieza especial?</h2>
+      <p>
+        Escribinos para consultar por nuestras creaciones,
+        disponibilidad o pedidos personalizados.
+      </p>
+
+      <a class="boton"
+         href="https://wa.me/543813534008?text=Hola%2C%20quiero%20consultar%20por%20Ra%C3%ADz%20Pacar%C3%A1"
+         target="_blank" rel="noopener">
+        Hablar por WhatsApp
+      </a>
+
+      <p style="margin-top: 22px; font-size: 13px;">
+        También podés encontrarnos en Instagram.
+      </p>
+
+      <a class="boton"
+         href="https://www.instagram.com/raizpacara.artesanias/"
+         target="_blank" rel="noopener"
+         style="margin-top: 5px;">
+        Ver Instagram
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>Raíz Pacará · Decoración artesanal</p>
+    <p>Tucumán, Argentina</p>
+    <p>Hecho a mano, con dedicación.</p>
+  </footer>
+</body>
+</html>
