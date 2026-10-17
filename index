@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f1e9">
+<title>Raíz Pacará | Artesanías</title>
+<style>
+:root{--olive:#777d66;--dark:#555d49;--sand:#f5f1e9;--earth:#a88b73;--ink:#38372f;--white:#fffdf9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--sand);color:var(--ink);font:14px/1.6 Arial,sans-serif}
+button,a{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+img{display:block;width:100%;object-fit:cover}
+.announcement{text-align:center;background:var(--dark);color:white;padding:7px;font-size:11px;letter-spacing:.5px}
+header{position:sticky;top:0;z-index:10;background:#f5f1e9f5;border-bottom:1px solid #ded7ca}
+nav{max-width:1300px;margin:auto;padding:15px 5%;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{text-align:center;line-height:1.3;white-space:nowrap}
+.logo strong{display:block;font:400 22px Georgia,serif;letter-spacing:3px}
+.logo span{display:block;font-size:9px;letter-spacing:3px;margin-top:4px}
+.navlinks{display:flex;align-items:center;gap:24px;font-size:12px}
+.navlinks button{border:0;background:none;color:var(--ink)}
+.navlinks button:hover{color:var(--earth)}
+.cartbtn,.pill{border:1px solid #b8ad9d;border-radius:30px;background:transparent;padding:9px 14px;font-size:11px}
+.view{display:none;min-height:65vh}
+.view.active{display:block;animation:appear .35s ease}
+@keyframes appear{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.hero{min-height:590px;display:flex;align-items:center;color:white;background:linear-gradient(90deg,#1e261fa6,#1e261f12),url('https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=2000&q=85') center/cover}
+.hero-content{width:min(1200px,100%);margin:auto;padding:70px 8%}
+.eyebrow,.label{font-size:10px;letter-spacing:3px;text-transform:uppercase}
+.hero h1{font:400 clamp(42px,7vw,78px)/1.1 Georgia,serif;letter-spacing:4px;margin:18px 0 10px}
+.hero .subtitle{font-size:11px;letter-spacing:4px;margin-bottom:28px}
+.hero p{max-width:390px;font:italic 19px/1.7 Georgia,serif;margin-bottom:25px}
+.btn{display:inline-block;border:1px solid var(--olive);border-radius:30px;background:var(--olive);color:white;padding:12px 21px;font-size:10px;letter-spacing:1px;text-transform:uppercase}
+.btn:hover{background:var(--dark)}
+.btn.light{background:transparent;border-color:#fff;color:white}
+.btn.outline{background:transparent;color:var(--ink);border-color:#b8ad9d}
+.wrap{max-width:1250px;margin:auto;padding:65px 5%}
+.heading{font:400 clamp(29px,4vw,42px)/1.2 Georgia,serif}
+.label{color:var(--earth);margin-bottom:13px}
+.intro{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:8%}
+.intro p,.story p{color:#706a60;margin:18px 0 25px;max-width:470px}
+.intro img{height:340px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+.feature{border-top:1px solid #d6cbbb;padding-top:15px;font-size:12px}
+.feature strong{display:block;font:20px Georgia,serif;margin-bottom:4px}
+.page-title{background:#e9e3d8;padding:45px 5%}
+.page-title .inner{max-width:1200px;margin:auto}
+.page-title h1{font:400 clamp(34px,5vw,52px) Georgia,serif;margin:8px 0}
+.page-title p{color:#706a60}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;margin-bottom:26px}
+.categories{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.categories button{border:1px solid #c9bead;background:transparent;border-radius:30px;padding:8px 13px;font-size:11px}
+.categories button.active,.categories button:hover{background:var(--olive);color:white;border-color:var(--olive)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card{background:var(--white);border:1px solid #e5ded3;min-width:0}
+.card img{aspect-ratio:4/4.6;background:#e9e3d8}
+.card-info{padding:14px}
+.card h3{font:19px Georgia,serif}
+.card p{font-size:11px;color:#777065;min-height:37px;margin:6px 0 12px}
+.price-row{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.price{font-size:13px;font-weight:bold}
+.add{border:1px solid #b9ad9b;background:transparent;border-radius:25px;padding:7px 10px;font-size:10px}
+.add:hover{background:var(--olive);color:white}
+.empty{padding:35px 0;color:#706a60}
+.story{display:grid;grid-template-columns:1fr 1fr;background:#e9e3d8}
+.story img{height:100%;min-height:400px}
+.story-copy{padding:clamp(30px,6vw,80px);align-self:center}
+.story-copy p{color:#706a60;margin:16px 0}
+.custom{background:var(--olive);color:white;padding:40px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.custom h2{font:400 30px Georgia,serif}
+.custom p{margin-top:8px;max-width:600px;color:#f1eee7}
+.custom .btn{border-color:white;flex-shrink:0}
+.contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.contact-grid article{border-top:1px solid #d3c9ba;padding-top:18px}
+.contact-grid h3{font:21px Georgia,serif;margin-bottom:10px}
+.contact-grid p{color:#706a60;margin:6px 0}
+footer{background:#eee8de;padding:35px 5% 20px}
+.footer-inner{max-width:1200px;margin:auto;display:flex;align-items:start;justify-content:space-between;gap:25px;flex-wrap:wrap}
+.footer-inner p{color:#706a60;font-size:12px;margin-top:7px}
+.copyright{border-top:1px solid #d7cdbf;margin:25px auto 0;padding-top:15px;text-align:center;color:#777065;font-size:11px}
+.cart-panel{display:none;position:fixed;inset:0;z-index:30;background:#0007;justify-content:flex-end}
+.cart-panel.open{display:flex}
+.cart-content{background:var(--sand);width:min(430px,100%);height:100%;overflow:auto;padding:25px}
+.cart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.cart-head h2{font:28px Georgia,serif}
+.close{background:none;border:0;font-size:28px}
+.cart-item{display:flex;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid #ddd3c5}
+.cart-item small{display:block;color:#777065}
+.qty{display:flex;align-items:center;gap:10px;margin-top:7px}
+.qty button{width:25px;height:25px;border:1px solid #b9ad9b;border-radius:50%;background:transparent}
+.summary{border-top:1px solid #d3c9ba;margin-top:20px;padding-top:16px}
+.line{display:flex;justify-content:space-between;gap:10px;margin:9px 0}
+.note{font-size:11px;color:#706a60;margin:14px 0}
+.summary .btn{width:100%;text-align:center}
+.whatsapp{position:fixed;bottom:17px;right:17px;z-index:8;background:var(--dark);color:white;padding:12px 17px;border-radius:30px;font-size:11px;box-shadow:0 3px 12px #0002}
+@media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.navlinks{gap:12px}}
+@media(max-width:620px){
+ nav{flex-wrap:wrap;padding:12px 4%;gap:12px}.logo strong{font-size:19px;letter-spacing:2px}
+ .navlinks{order:3;width:100%;justify-content:space-between;gap:8px;font-size:11px}
+ .cartbtn{padding:7px 10px}.hero{min-height:490px;background-position:58% center}
+ .hero-content{padding:50px 7%}.wrap{padding:45px 5%}
+ .intro,.story{grid-template-columns:1fr}.intro img{height:250px}.features{gap:12px}
+ .feature strong{font-size:16px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+ .card-info{padding:10px}.card h3{font-size:16px}.card p{font-size:10px}
+ .price-row{align-items:start;flex-direction:column}.add{width:100%}
+ .story img{min-height:260px;height:270px}.story-copy{padding:35px 6%}
+ .custom{align-items:flex-start;flex-direction:column}.custom h2{font-size:26px}
+ .contact-grid{grid-template-columns:1fr;gap:24px}
+}
+</style>
+</head>
+<body>
+<div class="announcement">Hecho a mano en Tucumán · Cada pieza tiene su propia historia</div>
+<header>
+<nav>
+<a class="logo" href="#inicio" onclick="showView('inicio')"><strong>RAÍZ PACARÁ</strong><span>ARTESANÍAS</span></a>
+<div class="navlinks">
+<button onclick="showView('inicio')">Inicio</button>
+<button onclick="showView('tienda')">Tienda</button>
+<button onclick="showView('historia')">Quiénes somos</button>
+<button onclick="showView('contacto')">Contacto</button>
+</div>
+<button class="cartbtn" onclick="openCart()">Carrito (<span id="count">0</span>)</button>
+</nav>
+</header>
+
+<main>
+<section class="view active" id="inicio">
+<div class="hero">
+<div class="hero-content">
+<div class="eyebrow">Tucumán · Argentina</div>
+<h1>RAÍZ PACARÁ</h1>
+<div class="subtitle">ARTESANÍAS</div>
+<p>Creaciones hechas a mano, pieza por pieza.</p>
+<button class="btn light" onclick="showView('tienda')">Explorar tienda →</button>
+</div>
+</div>
+<div class="wrap">
+<div class="intro">
+<div><div class="label">Nuestra esencia</div><h2 class="heading">El valor de lo hecho a mano.</h2><p>Creamos artesanías y objetos decorativos con tiempo, dedicación y amor por cada detalle.</p><button class="btn outline" onclick="showView('historia')">Conocé nuestra historia →</button></div>
+<img src="SET BRUMA.JPEG" alt="Artesanías de Raíz Pacará" onerror="this.src='SET BROTE.JPEG'">
+</div>
+<div class="features">
+<div class="feature"><strong>Hecho a mano</strong>Piezas realizadas con dedicación.</div>
+<div class="feature"><strong>Personalizados</strong>Detalles para momentos especiales.</div>
+<div class="feature"><strong>Desde Tucumán</strong>Entregas a coordinar en la zona.</div>
+</div>
+</div>
+<div class="custom"><div><h2>¿Buscás algo especial?</h2><p>Contanos tu idea y consultanos por nuestros productos personalizados.</p></div><a class="btn light" href="https://wa.me/5493813538008" target="_blank">Escribinos por WhatsApp ↗</a></div>
+</section>
+
+<section class="view" id="tienda">
+<div class="page-title"><div class="inner"><div class="label">Raíz Pacará · Artesanías</div><h1>Nuestra tienda</h1><p>Elegí tu categoría y descubrí nuestras piezas.</p></div></div>
+<div class="wrap">
+<div class="toolbar"><div><div class="label">Piezas hechas con dedicación</div><h2 class="heading">Encontrá tu favorito</h2></div><button class="pill" onclick="openCart()">Ver carrito (<span id="count2">0</span>)</button></div>
+<div class="categories" id="categories"></div>
+<div class="grid" id="products"></div>
+<div class="empty" id="no-products" hidden>Estamos preparando productos para esta categoría. Consultanos por WhatsApp.</div>
+</div>
+</section>
+
+<section class="view" id="historia">
+<div class="page-title"><div class="inner"><div class="label">Nuestra esencia</div><h1>Todo lo que se crea tiene una raíz.</h1><p>Una historia compartida, pieza por pieza.</p></div></div>
+<div class="story"><img src="SET BROTE.JPEG" alt="Detalles artesanales" onerror="this.src='SET BRUMA.JPEG'"><div class="story-copy"><div class="label">Quiénes somos</div><h2 class="heading">Dos mujeres, una misma pasión.</h2><p>Somos Iris y Bety. Nos conocimos a través de cursos de artesanías y descubrimos que compartíamos el amor por crear con nuestras propias manos.</p><p>Así nació Raíz Pacará: un espacio para imaginar, probar materiales y dar vida a nuevas ideas.</p><p>Detrás de cada pieza hay tiempo, paciencia, dedicación y amor. Hoy queremos compartir un poquito de lo que hacemos, pieza por pieza y a nuestra manera.</p><button class="btn outline" onclick="showView('contacto')">Conectá con nosotras →</button></div></div>
+<div class="custom"><div><h2>Detalles para momentos especiales.</h2><p>Comuniones, bautismos, cumpleaños y otros eventos. Consultanos por personalizados.</p></div><a class="btn light" href="https://wa.me/5493813538008" target="_blank">Consultar ↗</a></div>
+</section>
+
+<section class="view" id="contacto">
+<div class="page-title"><div class="inner"><div class="label">Estamos para ayudarte</div><h1>Conectemos.</h1><p>Consultas, pedidos y detalles de entrega.</p></div></div>
+<div class="wrap"><div class="contact-grid">
+<article><h3>WhatsApp</h3><p>Escribinos para consultar por productos, precios y disponibilidad.</p><a class="btn" href="https://wa.me/5493813538008" target="_blank">Hablar por WhatsApp ↗</a></article>
+<article><h3>Instagram</h3><p>Conocé más de nuestras creaciones y novedades.</p><a class="btn outline" href="https://www.instagram.com/raizpacara.artesanias/" target="_blank">Ver Instagram ↗</a></article>
+<article><h3>Entregas</h3><p>San Miguel de Tucumán, Yerba Buena, Tafí Viejo y Lomas de Tafí.</p><p>El costo y la forma de entrega se coordinan por WhatsApp.</p></article>
+</div></div>
+</section>
+</main>
+
+<footer><div class="footer-inner">
+<a class="logo" href="#inicio" onclick="showView('inicio')"><strong>RAÍZ PACARÁ</strong><span>ARTESANÍAS</span></a>
+<div><strong>Explorá</strong><p><a href="#tienda" onclick="showView('tienda')">Tienda</a></p><p><a href="#historia" onclick="showView('historia')">Quiénes somos</a></p></div>
+<div><strong>Contacto</strong><p><a href="https://www.instagram.com/raizpacara.artesanias/" target="_blank">Instagram</a></p><p><a href="https://wa.me/5493813538008" target="_blank">WhatsApp</a></p></div>
+</div><div class="copyright">Raíz Pacará · Artesanías · Tucumán, Argentina</div></footer>
+
+<a class="whatsapp" href="https://wa.me/5493813538008" target="_blank">WhatsApp ↗</a>
+
+<div class="cart-panel" id="cartPanel" onclick="if(event.target===this)closeCart()">
+<div class="cart-content">
+<div class="cart-head"><h2>Tu carrito</h2><button class="close" onclick="closeCart()">×</button></div>
+<div id="cartItems"></div>
+<div class="summary">
+<div class="line"><span>Subtotal</span><strong id="subtotal">$0</strong></div>
+<div class="line"><span>Descuento</span><strong id="discount">$0</strong></div>
+<div class="line"><span>Total productos</span><strong id="total">$0</strong></div>
+<p class="note" id="shipping">El costo de envío se coordina por WhatsApp.</p>
+<button class="btn" onclick="checkout()">Preparar pedido por WhatsApp ↗</button>
+</div>
+</div></div>
+
+<script>
+const WA="5493813538008";
+const categoriesList=["Todos","Ramos de flores","Sets de decoración","Joyeros y adornos","Espejos","Floreros y decoración"];
+const productsData=[
+{id:"ramo-arena",name:"Ramo Arena",cat:"Ramos de flores",price:15000,img:"RAMO ARENA.JPEG",desc:"Ramo de flores de tela realizado a mano."},
+{id:"ramo-cardo",name:"Ramo Cardo",cat:"Ramos de flores",price:15000,img:"RAMO CARDO.jpg",desc:"Flores de tela con formas y texturas."},
+{id:"ramo-silvestre",name:"Ramo Silvestre",cat:"Ramos de flores",price:15000,img:"RAMO SILVESTRE .JPEG",desc:"Un ramo artesanal inspirado en la naturaleza."},
+{id:"ramo-trama",name:"Ramo Trama",cat:"Ramos de flores",price:15000,img:"RAMO TRAMA.JPEG",desc:"Flores de tela con textura y personalidad."},
+{id:"joyero-nido",name:"Joyero Nido",cat:"Joyeros y adornos",price:3000,img:"JOYERO NIDO.JPEG",desc:"Un pequeño objeto artesanal para tus accesorios."},
+{id:"set-abra",name:"Set Abra",cat:"Sets de decoración",price:null,img:"SET ABRA.JPEG",desc:"Un conjunto decorativo artesanal."},
+{id:"set-botanico",name:"Set Botánico",cat:"Sets de decoración",price:25000,img:"SET BOTÁNICO.JPEG",desc:"Una composición decorativa de tonos naturales."},
+{id:"set-brote",name:"Set Brote",cat:"Sets de decoración",price:25000,img:"SET BROTE.JPEG",desc:"Bandeja ovalada, florero y cuenco en forma de pétalos. No incluye flores."},
+{id:"set-bruma",name:"Set Bruma",cat:"Sets de decoración",price:25000,img:"SET BRUMA.JPEG",desc:"Bandeja ovalada, florero y contenedor con tapa. No incluye flores."},
+{id:"set-latido",name:"Set Latido",cat:"Sets de decoración",price:23000,img:"SET LATIDO.JPEG",desc:"Bandeja, florero y figura contemplativa. No incluye flores."},
+{id:"set-loto",name:"Set Loto",cat:"Sets de decoración",price:25000,img:"SET LOTO.JPEG",desc:"Una composición artesanal para tus espacios."},
+{id:"set-nudo",name:"Set Nudo",cat:"Sets de decoración",price:15000,img:"SET NUDO .JPEG",desc:"Bandeja, florero y cuenco con relieve."},
+{id:"set-pausa",name:"Set Pausa",cat:"Sets de decoración",price:null,img:"SET PAUSA.JPEG",desc:"Consultanos por el precio y la disponibilidad."},
+{id:"set-pensador",name:"Set Pensador",cat:"Sets de decoración",price:23000,img:"SET PENSADOR.JPEG",desc:"Un conjunto decorativo para sumar personalidad."},
+{id:"set-resguardo",name:"Set Resguardo",cat:"Sets de decoración",price:null,img:"SET RESGUARDO.JPEG",desc:"Una composición decorativa artesanal."},
+{id:"set-silencio",name:"Set Silencio",cat:"Sets de decoración",price:23000,img:"Set silencio.JPEG",desc:"Bandeja, florero y escultura calada. No incluye flores."},
+{id:"set-silueta",name:"Set Silueta",cat:"Sets de decoración",price:null,img:"SET SILUETA .JPEG",desc:"Un conjunto artesanal para tus espacios."},
+{id:"set-calma",name:"Set Calma",cat:"Sets de decoración",price:10000,img:"Set calma.JPEG",desc:"Bandeja ovalada y florero o frasco."}
+];
+let activeCategory="Todos";
+let cart={};
+try{cart=JSON.parse(localStorage.getItem("rp-cart")||"{}")||{}}catch(e){cart={}}
+
+function showView(id){
+document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id===id));
+window.scrollTo({top:0,behavior:"smooth"});
+closeCart();
+}
+function money(n){return new Intl.NumberFormat("es-AR",{style:"currency",currency:"ARS",maximumFractionDigits:0}).format(n)}
+function renderCategories(){
+document.getElementById("categories").innerHTML=categoriesList.map(c=>`<button class="${c===activeCategory?"active":""}" onclick="setCategory('${c}')">${c}</button>`).join("");
+}
+function setCategory(c){activeCategory=c;renderCategories();renderProducts()}
+function renderProducts(){
+let list=productsData.filter(p=>activeCategory==="Todos"||p.cat===activeCategory);
+document.getElementById("products").innerHTML=list.map(p=>`
+<article class="card">
+<img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.opacity='.3';this.alt='Revisar nombre del archivo: ${p.img}'">
+<div class="card-info"><h3>${p.name}</h3><p>${p.desc}</p>
+<div class="price-row"><span class="price">${p.price==null?"Consultar precio":money(p.price)}</span><button class="add" onclick="add('${p.id}')">Agregar +</button></div></div></article>`).join("");
+document.getElementById("no-products").hidden=list.length>0;
+}
+function save(){try{localStorage.setItem("rp-cart",JSON.stringify(cart))}catch(e){}}
+function add(id){cart[id]=(cart[id]||0)+1;save();renderCart();openCart()}
+function change(id,n){cart[id]=(cart[id]||0)+n;if(cart[id]<=0)delete cart[id];save();renderCart()}
+function totals(){
+let subtotal=0;
+productsData.forEach(p=>{if(p.price!=null)subtotal+=p.price*(cart[p.id]||0)});
+let discount=subtotal>70000?Math.round(subtotal*.10):0;
+return{subtotal,discount,total:subtotal-discount}
+}
+function renderCart(){
+let count=Object.values(cart).reduce((a,b)=>a+b,0);
+document.getElementById("count").textContent=count;
+document.getElementById("count2").textContent=count;
+let selected=productsData.filter(p=>cart[p.id]>0);
+document.getElementById("cartItems").innerHTML=selected.length?selected.map(p=>`
+<div class="cart-item"><div><strong>${p.name}</strong><small>${p.price==null?"Precio a consultar":money(p.price)+" por unidad"}</small>
+<div class="qty"><button onclick="change('${p.id}',-1)">−</button><span>${cart[p.id]}</span><button onclick="change('${p.id}',1)">+</button></div></div>
+<strong>${p.price==null?"Consultar":money(p.price*cart[p.id])}</strong></div>`).join(""):'<p class="note">Todavía no agregaste productos al carrito.</p>';
+let t=totals();
+document.getElementById("subtotal").textContent=money(t.subtotal);
+document.getElementById("discount").textContent="− "+money(t.discount);
+document.getElementById("total").textContent=money(t.total);
+document.getElementById("shipping").textContent=t.subtotal>70000&&t.total>=70000?"¡Cumplís las condiciones para el descuento y envío gratis en las zonas habilitadas!":"El descuento se aplica al superar $70.000; el envío gratis requiere un total de al menos $70.000 después del descuento.";
+}
+function openCart(){document.getElementById("cartPanel").classList.add("open");document.body.style.overflow="hidden"}
+function closeCart(){document.getElementById("cartPanel").classList.remove("open");document.body.style.overflow=""}
+function checkout(){
+let selected=productsData.filter(p=>cart[p.id]>0);
+if(!selected.length){alert("Tu carrito está vacío.");return}
+let t=totals(),msg="Hola, Raíz Pacará. Quisiera consultar por este pedido:\n\n";
+selected.forEach(p=>msg+=`• ${p.name} x${cart[p.id]} — ${p.price==null?"precio a confirmar":money(p.price*cart[p.id])}\n`);
+msg+=`\nSubtotal de productos: ${money(t.subtotal)}\nDescuento: ${money(t.discount)}\nTotal de productos con precio confirmado: ${money(t.total)}\nEnvío: a coordinar.\n\n¿Me confirman disponibilidad y total final, por favor?`;
+window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(msg),"_blank");
+}
+renderCategories();renderProducts();renderCart();
+</script>
+</body>
+</html>
