@@ -2319,3 +2319,218 @@
     }
   ]
 }
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raíz Pacará - Artesanías</title>
+  
+  <!-- Librería para el zoom e interacción de imágenes (Lightbox) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+  
+  <style>
+    /* Paleta de Colores Oficial de Raíz Pacará (Canva) */
+    :root {
+      --verde-oliva: #778977;
+      --marron-tierra: #A88B73;
+      --color-arena: #EFECE6;
+      --beige-suave: #F5F2EC;
+      --blanco: #FFFFFF;
+      --texto-oscuro: #3D2B1F;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--color-arena);
+      color: var(--texto-oscuro);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 45px 20px;
+      background: var(--beige-suave);
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      border-bottom: 3px solid var(--verde-oliva);
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      letter-spacing: 3px;
+      color: var(--marron-tierra);
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: var(--verde-oliva);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .tarjeta-producto {
+      background: var(--blanco);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.06);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(168, 139, 115, 0.2);
+    }
+
+    .tarjeta-producto:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .tarjeta-producto a {
+      display: block;
+      position: relative;
+      cursor: zoom-in;
+    }
+
+    .tarjeta-producto img {
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .info-producto {
+      padding: 20px;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: var(--beige-suave);
+    }
+
+    .info-producto h3 {
+      color: var(--marron-tierra);
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .info-producto p {
+      font-size: 0.9rem;
+      color: var(--texto-oscuro);
+      margin-bottom: 15px;
+      opacity: 0.85;
+    }
+
+    .btn-contacto {
+      display: inline-block;
+      background-color: var(--verde-oliva);
+      color: var(--blanco);
+      padding: 10px 18px;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-contacto:hover {
+      background-color: var(--marron-tierra);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 45px;
+      padding: 20px;
+      color: var(--marron-tierra);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>RAÍZ PACARÁ</h1>
+    <p>Artesanías & Decoración</p>
+  </header>
+
+  <main class="galeria-grid">
+
+    <!-- Producto 1: Ejemplo de Pieza Artesanal -->
+    <div class="tarjeta-producto">
+      <a href="imagen1.jpg" data-fancybox="galeria" data-caption="Florero / Pieza Decorativa - Raíz Pacará">
+        <img src="imagen1.jpg" alt="Florero Artesanal">
+      </a>
+      <div class="info-producto">
+        <div>
+          <h3>Florero Texturizado</h3>
+          <p>Modelado y pintado a mano con detalles artesanales.</p>
+        </div>
+        <a href="https://wa.me/549381XXXXXXX" class="btn-contacto" target="_blank">CONSULTAR</a>
+      </div>
+    </div>
+
+    <!-- Producto 2: Ejemplo de Cuenco / Decoración -->
+    <div class="tarjeta-producto">
+      <a href="imagen2.jpg" data-fancybox="galeria" data-caption="Cuenco Loto - Raíz Pacará">
+        <img src="imagen2.jpg" alt="Cuenco Loto">
+      </a>
+      <div class="info-producto">
+        <div>
+          <h3>Cuenco Loto</h3>
+          <p>Diseño exclusivo en tonos tierra y arena.</p>
+        </div>
+        <a href="https://wa.me/549381XXXXXXX" class="btn-contacto" target="_blank">CONSULTAR</a>
+      </div>
+    </div>
+
+    <!-- Tarjeta de Medios de Pago (Inspirada en el QR que me mostraste) -->
+    <div class="tarjeta-producto">
+      <a href="qr_pago.jpg" data-fancybox="galeria" data-caption="Datos de Transferencia y Alias - Raíz Pacará">
+        <img src="qr_pago.jpg" alt="Medios de Pago y Alias">
+      </a>
+      <div class="info-producto">
+        <div>
+          <h3>Medios de Pago</h3>
+          <p>Alias: <strong>iris.0509</strong><br>Transferencia o QR Mercado Pago.</p>
+        </div>
+        <a href="qr_pago.jpg" data-fancybox="galeria" class="btn-contacto">VER QR AMPLIADO</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© Raíz Pacará Artesanías — Tucumán, Argentina</p>
+  </footer>
+
+  <!-- Scripts del visor de imágenes con Zoom -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    Fancybox.bind("[data-fancybox]", {
+      Images: {
+        zoom: true,
+      },
+    });
+  </script>
+</body>
+</html>
