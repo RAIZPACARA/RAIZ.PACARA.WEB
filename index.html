@@ -2534,3 +2534,455 @@
   </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raíz Pacará - Decoración Artesanal</title>
+  
+  <!-- Tipografía Serif Elegante (Playfair Display) y Sans-Serif (Plus Jakarta Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Lightbox para Zoom e Interacción con Imágenes -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+
+  <style>
+    /* Variables de la Paleta Oficial de Raíz Pacará */
+    :root {
+      --verde-oliva: #778977;
+      --marron-tierra: #A88B73;
+      --color-arena: #EFECE6;
+      --beige-suave: #F5F2EC;
+      --blanco: #FFFFFF;
+      --texto-oscuro: #2C2623;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--beige-suave);
+      color: var(--texto-oscuro);
+      line-height: 1.5;
+    }
+
+    /* Navbar Flotante / Encabezado */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      background-color: var(--beige-suave);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(168, 139, 115, 0.15);
+    }
+
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      letter-spacing: 2px;
+      color: var(--texto-oscuro);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .brand-sub {
+      display: block;
+      font-size: 0.62rem;
+      letter-spacing: 1.5px;
+      color: var(--marron-tierra);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin-top: -2px;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-carrito {
+      background: transparent;
+      border: 1px solid var(--marron-tierra);
+      border-radius: 30px;
+      padding: 8px 16px;
+      font-size: 0.85rem;
+      color: var(--texto-oscuro);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-carrito span {
+      background-color: var(--verde-oliva);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+    }
+
+    /* Manejo de Vistas Instantáneas (Sin Scroll) */
+    .vista-seccion {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      padding: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .vista-seccion.activa {
+      display: block;
+      opacity: 1;
+    }
+
+    /* ESTILOS VISTA INICIO (Hero tipo Revista) */
+    .hero-tag {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--marron-tierra);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      line-height: 1.15;
+      color: var(--texto-oscuro);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: #665D55;
+      margin-bottom: 28px;
+      max-width: 90%;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 35px;
+    }
+
+    .btn-principal {
+      background-color: var(--verde-oliva);
+      color: var(--blanco);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-principal:hover {
+      background-color: var(--marron-tierra);
+    }
+
+    .btn-secundario {
+      background-color: transparent;
+      color: var(--texto-oscuro);
+      border: 1px solid var(--marron-tierra);
+      padding: 14px 28px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+
+    /* Banner Destacado Curvo */
+    .card-banner {
+      background-color: var(--color-arena);
+      border-radius: 24px;
+      padding: 45px 25px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+      border: 1px solid rgba(168, 139, 115, 0.2);
+    }
+
+    .card-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--texto-oscuro);
+    }
+
+    .card-banner p {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--marron-tierra);
+      margin-top: 10px;
+    }
+
+    /* Íconos Informativos */
+    .info-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      text-align: center;
+      padding: 20px 0;
+      border-top: 1px solid rgba(168, 139, 115, 0.15);
+    }
+
+    .feature-item h4 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--texto-oscuro);
+      margin-top: 6px;
+    }
+
+    .feature-item p {
+      font-size: 0.7rem;
+      color: #7A7268;
+    }
+
+    /* ESTILOS VISTA PRODUCTOS (Grilla Limpia) */
+    .productos-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .btn-volver {
+      background: none;
+      border: none;
+      color: var(--marron-tierra);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .tarjeta-producto {
+      background: var(--blanco);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      display: flex;
+      flex-direction: column;
+      border: 1px solid rgba(168, 139, 115, 0.15);
+    }
+
+    .tarjeta-producto a {
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .tarjeta-producto img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .info-producto {
+      padding: 20px;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .info-producto h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--texto-oscuro);
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .info-producto p {
+      font-size: 0.85rem;
+      color: #7A7268;
+      margin-bottom: 16px;
+    }
+
+    /* Ajustes para Pantallas Más Grandes */
+    @media (min-width: 600px) {
+      .hero-buttons {
+        flex-direction: row;
+      }
+      .hero-title {
+        font-size: 3.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Encabezado / Nav Flotante -->
+  <nav>
+    <a href="#" onclick="navegarA('inicio'); return false;" style="text-decoration: none;">
+      <span class="brand-title">Raíz Pacará</span>
+      <span class="brand-sub">DECORACIÓN ARTESANAL & FLORES EN TELA</span>
+    </a>
+    <div class="nav-actions">
+      <button class="btn-carrito">🛒 <span>0</span></button>
+    </div>
+  </nav>
+
+  <!-- VISTA 1: INICIO (PÁGINA PRINCIPAL) -->
+  <section id="vista-inicio" class="vista-seccion activa">
+    <div class="hero-tag">— OBJETOS CON IDENTIDAD</div>
+    <h1 class="hero-title">El encanto de lo <em>hecho a mano.</em></h1>
+    <p class="hero-desc">
+      Piezas artesanales para darle calidez a tus espacios. Flores en tela, decoración y pequeños detalles creados con tiempo, dedicación y amor.
+    </p>
+
+    <div class="hero-buttons">
+      <button class="btn-principal" onclick="navegarA('productos')">
+        Explorar productos ↗
+      </button>
+      <button class="btn-secundario" onclick="navegarA('historia')">
+        Conocé nuestra historia
+      </button>
+    </div>
+
+    <!-- Banner Destacado -->
+    <div class="card-banner">
+      <h2>Lo que nace de nuestras manos</h2>
+      <p>RAÍZ PACARÁ · TUCUMÁN</p>
+    </div>
+
+    <!-- Íconos Informativos -->
+    <div class="info-features">
+      <div class="feature-item">
+        <div style="font-size: 1.2rem;">🖐️</div>
+        <h4>Hecho a mano</h4>
+        <p>Piezas con dedicación</p>
+      </div>
+      <div class="feature-item">
+        <div style="font-size: 1.2rem;">🌸</div>
+        <h4>Personalizados</h4>
+        <p>Contanos tu idea</p>
+      </div>
+      <div class="feature-item">
+        <div style="font-size: 1.2rem;">🚚</div>
+        <h4>Envíos a coordinar</h4>
+        <p>Tucumán y más</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISTA 2: CATÁLOGO DE PRODUCTOS (CAMBIO DIRECTO SIN SCROLL) -->
+  <section id="vista-productos" class="vista-seccion">
+    <div class="productos-header">
+      <button class="btn-volver" onclick="navegarA('inicio')">← Volver al inicio</button>
+      <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem;">Nuestros Productos</h2>
+    </div>
+
+    <div class="galeria-grid">
+
+      <!-- Producto 1 -->
+      <div class="tarjeta-producto">
+        <a href="imagen1.jpg" data-fancybox="galeria" data-caption="Florero / Pieza Decorativa">
+          <img src="imagen1.jpg" alt="Florero Artesanal">
+        </a>
+        <div class="info-producto">
+          <div>
+            <h3>Floreros de Yeso</h3>
+            <p>Piezas únicas creadas a mano para flores secas o de tela.</p>
+          </div>
+          <a href="https://wa.me/549381XXXXXXX" class="btn-principal" target="_blank">Consultar</a>
+        </div>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="tarjeta-producto">
+        <a href="imagen2.jpg" data-fancybox="galeria" data-caption="Cuenco Loto">
+          <img src="imagen2.jpg" alt="Cuenco Loto">
+        </a>
+        <div class="info-producto">
+          <div>
+            <h3>Cuenco Loto</h3>
+            <p>Ideal como centro de mesa o porta velas.</p>
+          </div>
+          <a href="https://wa.me/549381XXXXXXX" class="btn-principal" target="_blank">Consultar</a>
+        </div>
+      </div>
+
+      <!-- QR / Medios de Pago -->
+      <div class="tarjeta-producto">
+        <a href="qr_pago.jpg" data-fancybox="galeria" data-caption="Alias: iris.0509 - CBU Mercado Pago">
+          <img src="qr_pago.jpg" alt="Medios de Pago">
+        </a>
+        <div class="info-producto">
+          <div>
+            <h3>Medios de Pago</h3>
+            <p>Alias: <strong>iris.0509</strong><br>Transferencia o QR Mercado Pago.</p>
+          </div>
+          <a href="qr_pago.jpg" data-fancybox="galeria" class="btn-principal">Ampliar QR</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Script para la Navegación Instantánea y Zoom de Imágenes -->
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+  <script>
+    // Función para cambiar de vista sin hacer scroll
+    function navegarA(idVista) {
+      // Ocultar todas las secciones
+      const secciones = document.querySelectorAll('.vista-seccion');
+      secciones.forEach(sec => sec.classList.remove('activa'));
+
+      // Mostrar la sección elegida en el TOPE de la pantalla
+      const seccionDestino = document.getElementById('vista-' + idVista);
+      if (seccionDestino) {
+        seccionDestino.classList.add('activa');
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+    }
+
+    // Inicializar el zoom de fotos
+    Fancybox.bind("[data-fancybox]", {
+      Images: { zoom: true }
+    });
+  </script>
+</body>
+</html>
